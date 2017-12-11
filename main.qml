@@ -24,7 +24,7 @@ Window {
         id: root
         anchors.fill: parent
 
-            //тулбар
+            //toolbar
             EKPSTool {
                 id: toolbar1
             }
