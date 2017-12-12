@@ -28,8 +28,8 @@ Rectangle {
         onClicked: {
 
             //id.gr_name: "Группа 10 Предметы гигиены "
-            info.kl_name = model.one_class.kl_name
-            info.kl_include = model.include_role
+            info.kl_name = "тестовые данные"/*model.one_class.kl_name*/
+            info.kl_include = "тестовые данные по точу.ю что включает"/*model.include_role*/
             info.kl_not = "Электрические боитвы"
             //id.kl_also: "Гели"
             //id.kl_comment: "Предметы перенесены"
@@ -77,12 +77,12 @@ Rectangle {
         }
     }
 
-//    PropertyAnimation {
-//        id: circleAnimation2
-//        target: info // The aim Asking circular background
-//        properties: "opacity" // In animation, change the height, width and radius
-//        from: 0 // Change the settings from 0 pixels ...
-//        to: 1
-//        duration: 600 // within 300 milliseconds
-//    }
+    PropertyAnimation {
+        id: circleAnimation2
+        target: info // The aim Asking circular background
+        properties: "opacity" // In animation, change the height, width and radius
+        from: 0 // Change the settings from 0 pixels ...
+        to: 1
+        duration: 600 // within 300 milliseconds
+    }
 }

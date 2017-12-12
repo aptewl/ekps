@@ -78,10 +78,10 @@ Window {
 //            id: search
 //        }
 
-//        //подробности о классе
-//        EKPSInfo {
-//            id: info
-//        }
+        //подробности о классе
+        EKPSInfo {
+            id: info
+        }
 
 
     }
