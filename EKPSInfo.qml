@@ -75,7 +75,7 @@ Rectangle {
 
         Rectangle {
             id: mo
-            width: rs.width - lb.width - 100
+            width: rs.width - lb.width - 50
             height: textEdit1.contentHeight + 10
             border.width: 1
             border.color: "#2979ff"
@@ -90,8 +90,9 @@ Rectangle {
                 //font.pixelSize: 12
                 focus: true
                 text: "adfsdfasgadhf"
+                cursorVisible: false
                 readOnly: true
-                activeFocusOnPress: false
+                activeFocusOnPress: true
             }
         }
         //-----3-------------------
@@ -109,7 +110,7 @@ Rectangle {
         }
         Rectangle {
             id: mo2
-            width: rs.width - lb.width - 100
+            width: rs.width - lb.width - 60
             height: textEdit2.contentHeight + 10
             border.width: 1
             border.color: "#2979ff"
@@ -143,7 +144,7 @@ Rectangle {
         }
         Rectangle {
             id: mo3
-            width: rs.width - lb.width - 100
+            width: rs.width - lb.width - 60
             height: textEdit3.contentHeight + 10
             border.width: 1
             border.color: "#2979ff"

@@ -9,7 +9,7 @@ class Model_EKPS : public QAbstractTableModel
     Q_OBJECT
 public:
     Model_EKPS(QObject *parent=0);
-    Model_EKPS(QList< QPair<QString, QString> > listofPairs, QObject *parent=0);
+    Model_EKPS(QList< QPair<QString, int> > listofPairs, QObject *parent=0);
     Model_EKPS(QStringList list, QObject *parent=0);
     int rowCount(const QModelIndex &parent) const;
     int columnCount(const QModelIndex &parent) const;
@@ -20,7 +20,7 @@ public:
     bool is_liked();
 
 private:
-    QList< QPair<QString, QString> > listOfPairs;
+    QList< QPair<QString, int> > listOfPairs;
     QStringList list_of_classes;
 
 };

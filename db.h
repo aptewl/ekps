@@ -9,6 +9,7 @@ class Database
 public:
     Database(QString path_db);
     QStringList GetAllData();
+    QList< QPair<QString, int> > GetAllDataPair();
 };
 
 #endif // DB_H

@@ -48,7 +48,7 @@ Rectangle {
         Item {
             //сердечко
             property color overlayColor: "#000000"
-            visible: model.Is_liked_Role == "1" ? true : false
+            visible: model.Is_liked_Role == 1 ? true : false
             Image {
                 id: img
                 sourceSize.width: 25

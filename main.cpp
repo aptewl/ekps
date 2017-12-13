@@ -18,7 +18,8 @@ int main(int argc, char *argv[])
     }
 
     Database db("./ekps_db.sqlite");
-    Model_EKPS*  model = new Model_EKPS(db.GetAllData());
+    //Model_EKPS*  model = new Model_EKPS(db.GetAllData());
+    Model_EKPS*  model = new Model_EKPS(db.GetAllDataPair());
 
 
     QQmlApplicationEngine engine;

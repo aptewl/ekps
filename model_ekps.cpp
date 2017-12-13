@@ -6,7 +6,7 @@ Model_EKPS::Model_EKPS(QObject *parent): QAbstractTableModel(parent)
 
 }
 
-Model_EKPS::Model_EKPS(QList<QPair<QString, QString> > pairs, QObject *parent): QAbstractTableModel(parent)
+Model_EKPS::Model_EKPS(QList<QPair<QString, int> > pairs, QObject *parent): QAbstractTableModel(parent)
 {
     listOfPairs=pairs;
 }
@@ -19,7 +19,8 @@ Model_EKPS::Model_EKPS(QStringList list, QObject *parent)
 int Model_EKPS::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return list_of_classes.size();
+    //return list_of_classes.size();
+    return listOfPairs.size();
 }
 
 int Model_EKPS::columnCount(const QModelIndex &parent) const
@@ -33,21 +34,16 @@ QVariant Model_EKPS::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if (index.row() >= list_of_classes.size() || index.row() < 0)
+    //if (index.row() >= list_of_classes.size() || index.row() < 0)
+    if (index.row() >= listOfPairs.size() || index.row() < 0)
         return QVariant();
 
-
+    //show heart icon
     if (role == (Qt::UserRole + 3)) {
-        if (index.row() % 3 == 0){
-            return "1";
-        }
-        else {
-            return QVariant();
-        }
+        return listOfPairs.value(index.row()).second;
     }
 
-
-
+    //show blue zebra color
     if (role == (Qt::UserRole + 2)) {
         if (index.row() % 2 != 0){
             return QVariant("#2979ff");
@@ -57,8 +53,11 @@ QVariant Model_EKPS::data(const QModelIndex &index, int role) const
         }
     }
 
+
+    //show data
     if (role == (Qt::UserRole + 1)) {
-        return list_of_classes.at(index.row());
+        //return list_of_classes.at(index.row());
+        return listOfPairs.value(index.row()).first;
     }
     return QVariant();
 }
@@ -88,4 +87,5 @@ QHash<int, QByteArray> Model_EKPS::roleNames() const
 //{
 
 //}
+
 
