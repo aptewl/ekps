@@ -17,10 +17,11 @@ int main(int argc, char *argv[])
          QFile::setPermissions("./ekps_db.sqlite",QFile::WriteOwner | QFile::ReadOwner);
     }
 
-    Database db("./ekps_db.sqlite");
+    Database* db= new Database("./ekps_db.sqlite");
     //Model_EKPS*  model = new Model_EKPS(db.GetAllData());
-    Model_EKPS*  model = new Model_EKPS(db.GetAllDataPair());
-
+    //Model_EKPS*  model = new Model_EKPS(db.GetAllDataPair());
+    Model_EKPS*  model = new Model_EKPS(db);
+    //model->modelReset();
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("classListmodel", model);

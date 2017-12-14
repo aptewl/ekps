@@ -6,15 +6,32 @@ Model_EKPS::Model_EKPS(QObject *parent): QAbstractTableModel(parent)
 
 }
 
+Model_EKPS::Model_EKPS(Database *l_db, QObject *parent): QAbstractTableModel(parent)
+{
+    this->v_db = l_db;
+    listOfPairs = this->v_db->GetAllDataPair();
+}
+
 Model_EKPS::Model_EKPS(QList<QPair<QString, int> > pairs, QObject *parent): QAbstractTableModel(parent)
 {
     listOfPairs=pairs;
 }
 
-Model_EKPS::Model_EKPS(QStringList list, QObject *parent)
+Model_EKPS::Model_EKPS(QStringList list, QObject *parent): QAbstractTableModel(parent)
 {
     list_of_classes = list;
 }
+
+//int Model_EKPS::getModel()
+//{
+//    return var_var;
+//}
+
+//Model_EKPS::Model_EKPS(Database m_db, QObject *parent): QAbstractTableModel(parent)
+//{
+//    v_db = m_db;
+//    listOfPairs = v_db.GetAllDataPair();
+//}
 
 int Model_EKPS::rowCount(const QModelIndex &parent) const
 {
@@ -62,6 +79,8 @@ QVariant Model_EKPS::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+
+
 QHash<int, QByteArray> Model_EKPS::roleNames() const
 {
     QHash<int, QByteArray> roles;
@@ -69,6 +88,20 @@ QHash<int, QByteArray> Model_EKPS::roleNames() const
     roles[Qt::UserRole + 2] = "color";
     roles[Qt::UserRole + 3] = "Is_liked_Role";
     return roles;
+}
+
+void Model_EKPS::showOnlyLiked()
+{
+    listOfPairs.clear();
+    listOfPairs =  this->v_db->GetAllDataPairLiked();
+    emit endResetModel();
+}
+
+void Model_EKPS::showAll()
+{
+    listOfPairs.clear();
+    listOfPairs =  this->v_db->GetAllDataPair();
+    emit endResetModel();
 }
 
 //bool Model_EKPS::is_liked()

@@ -79,10 +79,11 @@ Button {
             if (bt2.type == "LIKE") {
                 if (bt2.state == 'down') {
                     bt2.state = ""
-                    classListmodel.data_change_search("")
+                    classListmodel.showAll()
                 } else {
                     bt2.state = 'down'
-                    classListmodel.data_change_only_liked()
+                    //classListmodel.data_change_only_liked()
+                    classListmodel.showOnlyLiked()
                 }
             }
 

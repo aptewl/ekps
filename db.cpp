@@ -34,3 +34,16 @@ QList<QPair<QString, int> > Database::GetAllDataPair()
     }
     return ListPairClass;
 }
+
+QList<QPair<QString, int> > Database::GetAllDataPairLiked()
+{
+    QSqlQuery query("SELECT KL.kl_kod  AS kod, KL.kl_name as name, KL.is_like as is_like FROM KL where KL.is_like = 1 ");
+    QList<QPair<QString, int> > ListPairClass;
+    QPair<QString, int> PairClass;
+    while (query.next()) {
+             PairClass.first = query.value(0).toString() + " " + query.value(1).toString();
+             PairClass.second = query.value(2).toInt();
+             ListPairClass.append(PairClass);
+    }
+    return ListPairClass;
+}
