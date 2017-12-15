@@ -6,20 +6,19 @@ import QtQuick.Controls.Styles 1.4
 Rectangle {
     id: toolbar
     width: parent.width
-    height: parent.height/7
+    height: parent.height / 7
     color: "#2979ff"
     border.width: 0
 
-
-    EKPSbutton {
+    EKPSButton {
         id: bt
         anchors.left: parent.left
         anchors.leftMargin: 0
         type: 'MENU_WIEW'
         button_color: "#ffffff"
-        image_source : "qrc:menu.svg"
-        h_size : parent.height/3
-        w_size : h_size
+        image_source: "qrc:menu.svg"
+        h_size: parent.height / 3
+        w_size: h_size
     }
 
     Text {
@@ -36,28 +35,26 @@ Rectangle {
         //font.pixelSize: 12
     }
 
-    EKPSbutton {
+    EKPSButton {
         id: bt2
         anchors.right: bt3.left
         anchors.rightMargin: 10
         type: 'FINDE_DIALOG_SHOW'
         button_color: "#ffffff"
-        image_source : "qrc:magnify.svg"
-        h_size : parent.height/3
-        w_size : h_size
+        image_source: "qrc:magnify.svg"
+        h_size: parent.height / 3
+        w_size: h_size
     }
 
-
-
-    EKPSbutton {
+    EKPSButton {
         id: bt3
         anchors.right: parent.right
         anchors.rightMargin: 0
         type: 'LIKE'
         button_color: "#ffffff"
-        image_source : "qrc:heart.svg"
-        h_size : parent.height/3
-        w_size : h_size
+        image_source: "qrc:heart.svg"
+        h_size: parent.height / 3
+        w_size: h_size
     }
 
     Text {
@@ -72,5 +69,14 @@ Rectangle {
         anchors.top: text1.bottom
         anchors.topMargin: 15
         //font.pixelSize: 12
+    }
+
+    PropertyAnimation {
+        id: circleAnimation4
+        target: search // The aim Asking circular background
+        properties: "opacity" // In animation, change the height, width and radius
+        from: 0 // Change the settings from 0 pixels ...
+        to: 1
+        duration: 600 // within 300 milliseconds
     }
 }

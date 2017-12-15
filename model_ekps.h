@@ -25,6 +25,8 @@ public:
     QHash<int, QByteArray> roleNames() const;
     Q_INVOKABLE void showOnlyLiked();
     Q_INVOKABLE void showAll();
+    Q_INVOKABLE void searchContext(QString search_str);
+    QString getWordFromStringByNumber(QString search_str, int word_position);
     bool is_liked();
 //signals:
 //    void modelChanged();

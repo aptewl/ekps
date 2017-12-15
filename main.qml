@@ -73,10 +73,10 @@ Window {
 
             }
 
-//        //поиск по ключевым словам
-//        EKPSSearch {
-//            id: search
-//        }
+        //поиск по ключевым словам
+        EKPSSearch {
+            id: search
+        }
 
         //подробности о классе
         EKPSInfo {

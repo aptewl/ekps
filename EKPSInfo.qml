@@ -170,7 +170,7 @@ Rectangle {
         }
     }
 
-    EKPSbutton {
+    EKPSButton {
         id: b
         text: 'ОТМЕНА'
         type: 'CANCEL_INFO'

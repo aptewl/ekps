@@ -72,7 +72,7 @@ Button {
             if (bt2.type == "FINDE_TXT") {
                 if (txt.text != '') {
                     circleAnimation3.start()
-                    classListmodel.data_change_search(txt.text)
+                    classListmodel.searchContext(txt.text)
                 }
             }
 

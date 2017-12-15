@@ -2,5 +2,6 @@
 *.ttf
 *.user
 *.qrc
+*.autosave
 ekps_db
 

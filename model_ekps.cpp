@@ -104,6 +104,50 @@ void Model_EKPS::showAll()
     emit endResetModel();
 }
 
+void Model_EKPS::searchContext(QString search_str)
+{
+    if(search_str.isEmpty()){
+        this->showAll();
+    }else{
+        QString s("первое второе  третье");
+        qDebug()<<getWordFromStringByNumber(s,1)<< getWordFromStringByNumber(s,2) << getWordFromStringByNumber(s,3);
+        listOfPairs.clear();
+        listOfPairs =  this->v_db->GetContextDataPair(getWordFromStringByNumber(s,1), getWordFromStringByNumber(s,2), getWordFromStringByNumber(s,3));
+    }
+    emit endResetModel();
+}
+
+QString Model_EKPS::getWordFromStringByNumber(QString search_str, int word_position)
+{
+    //    search_str.trimmed();
+    //    if(search_str.isEmpty()){
+    //        return "";
+    //    }else{
+    //        for(int i = 1; i <= word_position; i++){
+    //            for (int k = 0; k < search_str.length(); k++){
+    //                if(k < search_str.length()-1){
+    //                    if((search_str.at(k) == " ") && (search_str.at(k+1) == " ")){
+    //                        QString s =  search_str.remove(0, k+1);
+    //                        if(i == word_position){
+    //                            return s;
+    //                        }else{
+    //                            break;
+    //                        }
+    //                    }
+    //                }else{
+    //                    if((search_str.at(k+1) == " ")){
+    //                        return search_str.remove(0, k);
+    //                    }else{
+    //                        return search_str;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+}
+
+
+
 //bool Model_EKPS::is_liked()
 //{
 
