@@ -26,7 +26,7 @@ public:
     Q_INVOKABLE void showOnlyLiked();
     Q_INVOKABLE void showAll();
     Q_INVOKABLE void searchContext(QString search_str);
-    QString getWordFromStringByNumber(QString search_str, int word_position);
+    QList<QString> getWordsFromString(QString search_str);
     bool is_liked();
 //signals:
 //    void modelChanged();

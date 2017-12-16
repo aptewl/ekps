@@ -109,41 +109,80 @@ void Model_EKPS::searchContext(QString search_str)
     if(search_str.isEmpty()){
         this->showAll();
     }else{
-        QString s("первое второе  третье");
-        qDebug()<<getWordFromStringByNumber(s,1)<< getWordFromStringByNumber(s,2) << getWordFromStringByNumber(s,3);
         listOfPairs.clear();
-        listOfPairs =  this->v_db->GetContextDataPair(getWordFromStringByNumber(s,1), getWordFromStringByNumber(s,2), getWordFromStringByNumber(s,3));
+        QList<QString> list_of_words;
+        list_of_words = getWordsFromString(search_str);
+        listOfPairs =  this->v_db->GetContextDataPair(list_of_words[0], list_of_words[1],list_of_words[2]);
     }
     emit endResetModel();
 }
 
-QString Model_EKPS::getWordFromStringByNumber(QString search_str, int word_position)
+QList<QString> Model_EKPS::getWordsFromString(QString search_str)
 {
-    //    search_str.trimmed();
-    //    if(search_str.isEmpty()){
-    //        return "";
-    //    }else{
-    //        for(int i = 1; i <= word_position; i++){
-    //            for (int k = 0; k < search_str.length(); k++){
-    //                if(k < search_str.length()-1){
-    //                    if((search_str.at(k) == " ") && (search_str.at(k+1) == " ")){
-    //                        QString s =  search_str.remove(0, k+1);
-    //                        if(i == word_position){
-    //                            return s;
-    //                        }else{
-    //                            break;
-    //                        }
-    //                    }
-    //                }else{
-    //                    if((search_str.at(k+1) == " ")){
-    //                        return search_str.remove(0, k);
-    //                    }else{
-    //                        return search_str;
-    //                    }
+    search_str.trimmed();
+    QString word("");
+    QList<QString> list_of_words;
+    int i = 0;
+    for (int k = 0; k < search_str.length(); k++){
+        if ((search_str.at(k) == " ") && (word.length()>0)){
+            if (i < 3){
+                list_of_words.append(word);
+                word = "";
+            }
+            i++;
+        }else{
+            if((search_str.at(k) != " ")){
+                word.append(search_str.at(k));
+            }
+        }
+    }
+
+
+    if (i == 0){
+        list_of_words.append(word);
+        list_of_words.append("");
+        list_of_words.append("");
+    }
+    if(i == 1){
+        list_of_words.append(word);
+        list_of_words.append("");
+    }
+    if (i == 2){
+        list_of_words.append(word);
+    }
+
+    return list_of_words;
+
+
+
+
+
+    //        search_str.trimmed();
+    //        if(search_str.isEmpty()){
+    //            return "";
+    //        }else{
+    //     //       for(int i = 1; i <= word_position; i++){
+    //            int m, l;
+    //               for (int k = 0; k < search_str.length(); k++){
+    //    //                if(k < search_str.length()-1){
+    //                        if((search_str.at(k) == " ") && (search_str.at(k+1) == " ")){
+    //    //                        QString s =  search_str.remove(0, k+1);
+    //    //                        if(i == word_position){
+    //    //                            return s;
+    //    //                        }else{
+    //    //                            break;
+    //    //                        }
+    //    //                    }
+    //    //                }else{
+    //    //                    if((search_str.at(k+1) == " ")){
+    //    //                        return search_str.remove(0, k);
+    //    //                    }else{
+    //    //                        return search_str;
+    //    //                    }
+    //    //                }
     //                }
-    //            }
+    //            //}
     //        }
-    //    }
 }
 
 
