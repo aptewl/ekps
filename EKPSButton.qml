@@ -70,8 +70,9 @@ Button {
             }
 
             if (bt2.type == "FINDE_TXT") {
-                if (txt.text != '') {
+                if (txt.text.length != 0) {
                     circleAnimation3.start()
+                    //txt.editingFinished()
                     classListmodel.searchContext(txt.text)
                 }
             }

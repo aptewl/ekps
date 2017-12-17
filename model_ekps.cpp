@@ -112,6 +112,7 @@ void Model_EKPS::searchContext(QString search_str)
         listOfPairs.clear();
         QList<QString> list_of_words;
         list_of_words = getWordsFromString(search_str);
+        qDebug()<<list_of_words[0]<< list_of_words[1]<<list_of_words[2];
         listOfPairs =  this->v_db->GetContextDataPair(list_of_words[0], list_of_words[1],list_of_words[2]);
     }
     emit endResetModel();
@@ -124,14 +125,14 @@ QList<QString> Model_EKPS::getWordsFromString(QString search_str)
     QList<QString> list_of_words;
     int i = 0;
     for (int k = 0; k < search_str.length(); k++){
-        if ((search_str.at(k) == " ") && (word.length()>0)){
+        if (((search_str.at(k) == " ")|| (search_str.at(k) == "\n")) && (word.length()>0)){
             if (i < 3){
                 list_of_words.append(word);
                 word = "";
             }
             i++;
         }else{
-            if((search_str.at(k) != " ")){
+            if((search_str.at(k) != " ")|| (search_str.at(k) == "\n")){
                 word.append(search_str.at(k));
             }
         }

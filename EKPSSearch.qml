@@ -1,7 +1,7 @@
-import QtQuick 2.0
+import QtQuick 2.7
 import QtGraphicalEffects 1.0
 //import QtQuick.Controls 2.2
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.2
 import QtQuick.Controls.Styles 1.4
 
 
@@ -11,10 +11,10 @@ Rectangle {
     //modal: true
     z: 10
     anchors.fill: parent
-    anchors.leftMargin: 60
-    anchors.rightMargin: 60
-    anchors.topMargin: 100
-    anchors.bottomMargin: 200
+    anchors.leftMargin: 5 * parent.width / 100
+    anchors.rightMargin: 5 * parent.width / 100
+    anchors.topMargin: 70
+    anchors.bottomMargin: 50 * parent.height / 100
     width: parent.width
     height: parent.height
     color: "#e3f2fd"
@@ -60,10 +60,7 @@ Rectangle {
 
         Label {
             id: lb2
-            // anchors.top: search.top
             anchors.left: parent.left
-            //width: search.width
-            // anchors.topMargin: 50
             clip: true
             anchors.leftMargin: 10
             text: "Поиск "
@@ -76,55 +73,91 @@ Rectangle {
         }
         Label {
             id: lb3
-            // anchors.top: search.top
             anchors.left: parent.left
-            //width: search.width
             anchors.topMargin: -10
             clip: true
             anchors.leftMargin: 10
-            text: "по ключевым словам"
+            text: "по 3 ключевым словам"
             color: "#616161"
             font.pixelSize: 30
             font.bold: false
             FontLoader {
-                source: "./material/fonts/roboto/Roboto-Regular.ttf"
+                source: "./Roboto-Regular.ttf"
             }
         }
 
         Item {
+            id : itm
             width: parent.width - 10
             height: txt.height + 28
             clip: true
             anchors.horizontalCenter: parent.horizontalCenter
+            //            function ensureVisible(r)
+            //            {
+            //                if (txt.x >= r.x)
+            //                    txt.x  = r.x;
+            //                else if (txt.x +txt.width <= r.x+r.width)
+            //                    txt.x  = r.x+r.width-txt.width;
+            //                if (txt.y >= r.y){
+            //                    //txt.y = r.y ;
+            //                    rec_line.y = txt.y+txt.height + 8;}
+            //                else if (txt.y+txt.height <= r.y+r.height){
+            //                    //txt.y = r.y+r.height-txt.height;
+            //                    rec_line.y =txt.y+ txt.height + 8;}
+            //            }
 
             Text {
                 id: txt_hint
                 y: 12
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pixelSize: 16
-                text: "введите через пробел поисковый запрос"
-                //visible: true//!root.label && !root.value.length
+                font.pixelSize: txt.font.pixelSize - 2
+                text: "через пробелы или ввод"
                 opacity: 0.26
                 //color:  txt.activeFocus ? "#2979ff" :"black"
                 //opacity: txt.activeFocus ? 1 : 0.12//root.is_error ? 1:  txt.activeFocus? 1 : 0.12
-                visible: !txt.activeFocus //? true : false
+                visible: (txt.text.length < 1) //? true : false
             }
             TextEdit {
                 id: txt
                 width: parent.width - 10
+                height: font.pixelSize*6
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: 12
-                height: 19 //lineCount * 19
+                //height: 19 //lineCount * 19
                 text: "" //root.value
                 //font.pixelSize: 25
                 //focus: true
+                //lineCount: 1
+                //lineCount: 3
+               // selectByKeyboard : true
                 wrapMode: TextEdit.NoWrap //root.multiline ?  TextEdit.Wrap : TextEdit.NoWrap
+                //onCursorRectangleChanged: itm.ensureVisible(cursorRectangle)
+
+
+                //                onCursorRectangleChanged: txt.ensureVisible()
+                //                function ensureVisible(){
+                //                    if (txt.x >= txt.cursorRectangle.x)
+                //                        txt.x  = txt.cursorRectangle.x;
+                //                    else if (txt.x+txt.width <= txt.cursorRectangle.x+txt.cursorRectangle.width)
+                //                        txt.x  = txt.cursorRectangle.x+txt.cursorRectangle.width-txt.width;
+                //                    if (txt.y >= txt.cursorRectangle.y)
+                //                        txt.y = txt.cursorRectangle.y;
+                //                    else if (txt.y+txt.height <= txt.cursorRectangle.y +txt.cursorRectangle.height)
+                //                        txt.y = txt.cursorRectangle.y +txt.cursorRectangle.height-txt.height;
+                //                }
+
+//                ScrollBar.vertical: ScrollBar {
+//                    width: 50
+//                    height:50
+
+//                }
+
                 enabled: true
                 opacity: 0.87 //root.disabled? 0.26 : 0.87
 
                 cursorDelegate: Rectangle {
                     width: 2
-                    height: 16
+                    //height: txt.height-3//16
                     color: "#c2185b" //root.is_error? p2_500 : p1_500
                     visible: txt.activeFocus
 
@@ -137,16 +170,17 @@ Rectangle {
                     }
                     onXChanged: cursor_blink_anim.restart()
                 }
-
-                onCursorRectangleChanged: ensureVisible(cursorRectangle)
-
-                function ensureVisible(r) {
-                    txt.x = r.x < txt.width ? 0 : txt.width - r.x - 2
-                }
+                //documentSizeChanged
+                onCursorRectangleChanged: rec_line.y = cursorRectangle.y + 2* txt.font.pixelSize
+                //onLineCountChanged: txt.height = txt.lineCount>3 ? txt.font.pixelSize*6 : txt.height
+                //                function ensureVisible(r) {
+                //                    txt.x = r.x < txt.width ? 0 : txt.width - r.x - 2
+                //                }
             }
 
             Rectangle {
-                y: txt.y + txt.height + 8
+                id: rec_line
+                //y: txt.y + (txt.font.pixelSize + 8)*txt.lineCount
                 width: parent.width //  - clmn.x
                 height: txt.activeFocus ? 2 : 1
                 color: txt.activeFocus ? "#2979ff" : "black"
@@ -174,7 +208,7 @@ Rectangle {
             type: 'FINDE_TXT'
             text: "ПОИСК"
             button_color: "#616161"
-            enabled: txt.text != ""
+            enabled: txt.text.length > 0
             //iconSource: "material/icons/close.svg"
             // ColorOverlay {
             //     anchors.fill: b1

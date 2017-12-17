@@ -23,6 +23,7 @@ Window {
     Item {
         id: root
         anchors.fill: parent
+        clip: true
 
             //toolbar
             EKPSTool {

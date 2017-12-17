@@ -9,6 +9,7 @@ Rectangle {
     height: parent.height / 7
     color: "#2979ff"
     border.width: 0
+    clip: true
 
     EKPSButton {
         id: bt
@@ -18,7 +19,7 @@ Rectangle {
         button_color: "#ffffff"
         image_source: "qrc:menu.svg"
         h_size: parent.height / 3
-        w_size: h_size
+        w_size: 1.2*h_size
     }
 
     Text {
@@ -43,7 +44,7 @@ Rectangle {
         button_color: "#ffffff"
         image_source: "qrc:magnify.svg"
         h_size: parent.height / 3
-        w_size: h_size
+        w_size: 1.2*h_size
     }
 
     EKPSButton {
@@ -54,7 +55,7 @@ Rectangle {
         button_color: "#ffffff"
         image_source: "qrc:heart.svg"
         h_size: parent.height / 3
-        w_size: h_size
+        w_size: 1.2*h_size
     }
 
     Text {
