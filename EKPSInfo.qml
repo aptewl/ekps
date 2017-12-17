@@ -39,31 +39,32 @@ Rectangle {
         anchors.fill: root
     }
 
-    Row {
+    Column {
         id: grid
         anchors.fill: parent
+        anchors.topMargin: 30
         //columns: 3
         spacing: 10
         //anchors.verticalCenter: parent.verticalCenter
         clip: true
 
-        Item {
-            height: 30
-            width: 10
-        }
-        Item {
-            height: 30
-            width: 10
-        }
-        Item {
-            height: 30
-            width: 10
-        }
+//        Item {
+//            height: 30
+//            width: 10
+//        }
+//        Item {
+//            height: 30
+//            width: 10
+//        }
+//        Item {
+//            height: 30
+//            width: 10
+//        }
         //------2------------
-        Item {
-            height: 30
-            width: 10
-        }
+//        Item {
+//            height: 30
+//            width: 10
+//        }
 
         Label {
             id: lb
@@ -71,11 +72,15 @@ Rectangle {
             text: "Наименование"
             color: "#616161"
             font.bold: true
+           // anchors.top: parent.top
+           // anchors.topMargin: 30
         }
 
         Rectangle {
             id: mo
-            width: rs.width - lb.width - 50
+            width: 95 * parent.width/100
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             height: textEdit1.contentHeight + 10
             border.width: 1
             border.color: "#2979ff"
@@ -96,10 +101,10 @@ Rectangle {
             }
         }
         //-----3-------------------
-        Item {
-            height: 30
-            width: 10
-        }
+//        Item {
+//            height: 30
+//            width: 10
+//        }
 
         Label {
             id: lb2
@@ -110,8 +115,10 @@ Rectangle {
         }
         Rectangle {
             id: mo2
-            width: rs.width - lb.width - 60
+            width: 95 * parent.width/100
             height: textEdit2.contentHeight + 10
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             border.width: 1
             border.color: "#2979ff"
             radius: 10
@@ -120,7 +127,7 @@ Rectangle {
                 id: textEdit2
                 anchors.fill: parent
                 wrapMode: TextEdit.Wrap
-                width: mo.width
+                width: mo2.width
                 //height: mo.height
                 //font.pixelSize: 12
                 focus: true
@@ -130,10 +137,10 @@ Rectangle {
             }
         }
         //-------4-----------------
-        Item {
-            height: 30
-            width: 10
-        }
+//        Item {
+//            height: 30
+//            width: 10
+//        }
 
         Label {
             id: lb3
@@ -144,8 +151,10 @@ Rectangle {
         }
         Rectangle {
             id: mo3
-            width: rs.width - lb.width - 60
+            width: 95 * parent.width/100
             height: textEdit3.contentHeight + 10
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             border.width: 1
             border.color: "#2979ff"
             radius: 10
@@ -154,8 +163,8 @@ Rectangle {
                 id: textEdit3
                 anchors.fill: parent
                 wrapMode: TextEdit.Wrap
-                width: mo.width
-                height: mo.height
+                width: mo3.width
+                //height: mo.height
                 //font.pixelSize: 12
                 focus: true
                 text: "adfsdfasgadhf"
@@ -164,10 +173,10 @@ Rectangle {
             }
         }
         //-----------5-------------
-        Item {
-            height: 30
-            width: 10
-        }
+//        Item {
+//            height: 30
+//            width: 10
+//        }
     }
 
     EKPSButton {
