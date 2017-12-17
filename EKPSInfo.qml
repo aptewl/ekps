@@ -39,10 +39,10 @@ Rectangle {
         anchors.fill: root
     }
 
-    Grid {
+    Row {
         id: grid
         anchors.fill: parent
-        columns: 3
+        //columns: 3
         spacing: 10
         //anchors.verticalCenter: parent.verticalCenter
         clip: true

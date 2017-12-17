@@ -55,6 +55,7 @@ Window {
                         id: rec
                         color: model.color
                         Text {
+                            id:delegat_text
                             text: model.klass_name
                             elide: Text.ElideRight
                             //font.pixelSize: 14

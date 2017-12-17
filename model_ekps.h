@@ -26,6 +26,8 @@ public:
     Q_INVOKABLE void showOnlyLiked();
     Q_INVOKABLE void showAll();
     Q_INVOKABLE void searchContext(QString search_str);
+//    Q_INVOKABLE QString getCurKlassName(QString text);
+    Q_INVOKABLE QString getCurKlInclude(QString text);
     QList<QString> getWordsFromString(QString search_str);
     bool is_liked();
 //signals:

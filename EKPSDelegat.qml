@@ -28,8 +28,8 @@ Rectangle {
         onClicked: {
 
             //id.gr_name: "Группа 10 Предметы гигиены "
-            info.kl_name = "тестовые данные"/*model.one_class.kl_name*/
-            info.kl_include = "тестовые данные по точу.ю что включает"/*model.include_role*/
+            info.kl_name = /*model.getCurKlassName*/(delegat_text.text)
+            info.kl_include = classListmodel.getCurKlInclude(delegat_text.text)
             info.kl_not = "Электрические боитвы"
             //id.kl_also: "Гели"
             //id.kl_comment: "Предметы перенесены"

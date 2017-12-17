@@ -118,6 +118,22 @@ void Model_EKPS::searchContext(QString search_str)
     emit endResetModel();
 }
 
+//QString Model_EKPS::getCurKlassName(QString text)
+//{
+//    return
+//}
+
+
+
+QString Model_EKPS::getCurKlInclude(QString text)
+{
+    if(text.at(0) != "*"){
+        return this->v_db->GetIncludeByKodKl(text.remove(4,text.size()));
+    }else{
+        return this->v_db->GetIncludeByKodKl(text.remove(5,text.size()));
+    }
+}
+
 QList<QString> Model_EKPS::getWordsFromString(QString search_str)
 {
     search_str.trimmed();

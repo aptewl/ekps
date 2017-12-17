@@ -69,3 +69,15 @@ QList<QPair<QString, int> > Database::GetContextDataPair(QString s1, QString s2,
     }
     return ListPairClass;
 }
+
+QString Database::GetIncludeByKodKl(QString kod)
+{
+    QSqlQuery query;
+    query.prepare("SELECT KL.kl_prim as prim FROM KL where KL.kl_kod like :kod");
+    query.bindValue(":kod", kod);
+    query.exec();
+    query.first();
+    //qDebug()<<"================"<<kod;
+    //qDebug()<<"================"<<query.value(0).toString();
+    return query.value(0).toString();
+}
