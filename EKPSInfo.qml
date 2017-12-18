@@ -52,23 +52,31 @@ Rectangle {
         spacing: 10
         clip: true
 
-        Switch {
-            id: switch1
+        //        Switch {
+        //            id: switch1
+        //            text: qsTr(" в закладки")
+        //            anchors.left:  parent.left
+        //            anchors.leftMargin:  10
+
+        //        }
+        EKPSSwitch {
             text: qsTr(" в закладки")
-            anchors.left:  parent.left
-            anchors.leftMargin:  10
+            checked: true
+            anchors.right:  parent.right
+            anchors.rightMargin:  10
         }
-//        Switch {
-//            id: switch1
-//            //text: qsTr(" в закладки")
-//            anchors.right:  parent.right
-//            anchors.rightMargin:  10
-//            Text {
-//                id:svitch_text
-//                text: qsTr(" в закладки")
-//                anchors.right: switch1.left
-//            }
-//        }
+
+        //        Switch {
+        //            id: switch1
+        //            //text: qsTr(" в закладки")
+        //            anchors.right:  parent.right
+        //            anchors.rightMargin:  10
+        //            Text {
+        //                id:svitch_text
+        //                text: qsTr(" в закладки")
+        //                anchors.right: switch1.left
+        //            }
+        //        }
 
 
         Label {

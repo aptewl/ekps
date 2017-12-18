@@ -49,10 +49,12 @@ Rectangle {
             //сердечко
             property color overlayColor: "#000000"
             visible: model.Is_liked_Role == 1 ? true : false
+            anchors.top: parent.top
+            anchors.topMargin: 0.25 * parent.height
             Image {
                 id: img
-                sourceSize.width: 25
-                sourceSize.height: 25
+                sourceSize.width: 0.25 * parent.height
+                sourceSize.height: 0.25 * parent.height
                 source: "qrc:heart.svg"
                 smooth: true
             }
