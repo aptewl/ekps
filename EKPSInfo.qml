@@ -1,7 +1,7 @@
 import QtQuick 2.7
 import QtGraphicalEffects 1.0
-//import QtQuick.Controls 2.2
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.2
+//import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
 Rectangle {
@@ -22,7 +22,10 @@ Rectangle {
     //property alias gr_name: "Группа 10 Предметы гигиены "
     property alias kl_name: textEdit1.text
     property alias kl_include: textEdit2.text
+    property alias adding_includ: textEdit25.text
     property alias kl_not: textEdit3.text
+    property alias replased: textEdit4.text
+
 
     // property alias kl_also: "Гели"
     // property alias kl_comment: "Предметы перенесены"
@@ -39,32 +42,34 @@ Rectangle {
         anchors.fill: root
     }
 
+
+
+
     Column {
         id: grid
         anchors.fill: parent
         anchors.topMargin: 30
-        //columns: 3
         spacing: 10
-        //anchors.verticalCenter: parent.verticalCenter
         clip: true
 
-//        Item {
-//            height: 30
-//            width: 10
+        Switch {
+            id: switch1
+            text: qsTr(" в закладки")
+            anchors.left:  parent.left
+            anchors.leftMargin:  10
+        }
+//        Switch {
+//            id: switch1
+//            //text: qsTr(" в закладки")
+//            anchors.right:  parent.right
+//            anchors.rightMargin:  10
+//            Text {
+//                id:svitch_text
+//                text: qsTr(" в закладки")
+//                anchors.right: switch1.left
+//            }
 //        }
-//        Item {
-//            height: 30
-//            width: 10
-//        }
-//        Item {
-//            height: 30
-//            width: 10
-//        }
-        //------2------------
-//        Item {
-//            height: 30
-//            width: 10
-//        }
+
 
         Label {
             id: lb
@@ -72,15 +77,19 @@ Rectangle {
             text: "Наименование"
             color: "#616161"
             font.bold: true
-           // anchors.top: parent.top
-           // anchors.topMargin: 30
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            // anchors.top: parent.top
+            // anchors.topMargin: 30
         }
 
         Rectangle {
             id: mo
             width: 95 * parent.width/100
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 10
             height: textEdit1.contentHeight + 10
             border.width: 1
             border.color: "#2979ff"
@@ -101,28 +110,29 @@ Rectangle {
             }
         }
         //-----3-------------------
-//        Item {
-//            height: 30
-//            width: 10
-//        }
-
         Label {
             id: lb2
             clip: true
-            text: "Включает    "
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            text: "Включает"
             color: "#616161"
             font.bold: true
+            visible: textEdit2.text != ""
         }
         Rectangle {
             id: mo2
             width: 95 * parent.width/100
             height: textEdit2.contentHeight + 10
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 10
             border.width: 1
             border.color: "#2979ff"
             radius: 10
             clip: true
+            visible: textEdit2.text != ""
             TextEdit {
                 id: textEdit2
                 anchors.fill: parent
@@ -136,29 +146,67 @@ Rectangle {
                 activeFocusOnPress: false
             }
         }
+        //-----2.5-------------------
+        Label {
+            id: lb25
+            clip: true
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            text: "Также включает"
+            color: "#616161"
+            font.bold: true
+            visible: textEdit25.text != ""
+        }
+        Rectangle {
+            id: mo25
+            width: 95 * parent.width/100
+            height: textEdit25.contentHeight + 10
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            border.width: 1
+            border.color: "#2979ff"
+            radius: 10
+            clip: true
+            visible: textEdit25.text != ""
+            TextEdit {
+                id: textEdit25
+                anchors.fill: parent
+                wrapMode: TextEdit.Wrap
+                width: mo25.width
+                //height: mo.height
+                //font.pixelSize: 12
+                focus: true
+                text: adding_includ
+                readOnly: true
+                activeFocusOnPress: false
+            }
+        }
         //-------4-----------------
-//        Item {
-//            height: 30
-//            width: 10
-//        }
-
         Label {
             id: lb3
             clip: true
             text: "Не включает "
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             color: "#616161"
             font.bold: true
+            visible: textEdit3.text != ""
         }
         Rectangle {
             id: mo3
             width: 95 * parent.width/100
             height: textEdit3.contentHeight + 10
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 10
             border.width: 1
             border.color: "#2979ff"
             radius: 10
             clip: true
+            visible: textEdit3.text != ""
             TextEdit {
                 id: textEdit3
                 anchors.fill: parent
@@ -173,10 +221,43 @@ Rectangle {
             }
         }
         //-----------5-------------
-//        Item {
-//            height: 30
-//            width: 10
-//        }
+        Label {
+            id: lb4
+            clip: true
+            text: "Перенесено в"
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            color: "#616161"
+            font.bold: true
+            visible: textEdit4.text != ""
+        }
+        Rectangle {
+            id: mo4
+            width: 95 * parent.width/100
+            height: textEdit3.contentHeight + 10
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            border.width: 1
+            border.color: "#2979ff"
+            radius: 10
+            clip: true
+            visible: textEdit4.text != ""
+            TextEdit {
+                id: textEdit4
+                anchors.fill: parent
+                wrapMode: TextEdit.Wrap
+                width: mo3.width
+                //height: mo.height
+                //font.pixelSize: 12
+                focus: true
+                text: "adfsdfasgadhf"
+                readOnly: true
+                activeFocusOnPress: false
+            }
+        }
+
     }
 
     EKPSButton {

@@ -26,6 +26,8 @@ Rectangle {
 
     MouseArea {
         anchors.fill: search
+
+
     }
 
     PropertyAnimation {
@@ -56,7 +58,11 @@ Rectangle {
             width: parent.width - 10
             color: "transparent"
             anchors.horizontalCenter: parent.horizontalCenter
+
+
         }
+
+
 
         Label {
             id: lb2
@@ -65,7 +71,7 @@ Rectangle {
             anchors.leftMargin: 10
             text: "Поиск "
             color: "#616161"
-            font.pixelSize: 30
+            //font.pixelSize: 30
             font.bold: false
             FontLoader {
                 source: "./Roboto-Regular.ttf"
@@ -79,7 +85,7 @@ Rectangle {
             anchors.leftMargin: 10
             text: "по 3 ключевым словам"
             color: "#616161"
-            font.pixelSize: 30
+            //font.pixelSize: 30
             font.bold: false
             FontLoader {
                 source: "./Roboto-Regular.ttf"

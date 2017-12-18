@@ -6,7 +6,7 @@ import QtQuick.Controls.Styles 1.4
 Rectangle {
     id: rec
     width: pythonList.width
-    height: 50
+    height: delegat_text.font.pixelSize *2.3
     opacity: rec.active ? 0.08 : mouse_primary.containsMouse ? 0.8 : 1
     clip: true
 
@@ -28,14 +28,14 @@ Rectangle {
         onClicked: {
 
             //id.gr_name: "Группа 10 Предметы гигиены "
-            info.kl_name = /*model.getCurKlassName*/(delegat_text.text)
+            info.kl_name = delegat_text.text
             info.kl_include = classListmodel.getCurKlInclude(delegat_text.text)
+            info.adding_includ = "тест"
             info.kl_not = "Электрические боитвы"
+            info.replased = ""
             //id.kl_also: "Гели"
-            //id.kl_comment: "Предметы перенесены"
             info.opacity = 1
             circleAnimation2.start()
-            //тут заолнение подробного просмотра
         }
         onPressed: {
             colorRect.x = mouseX
@@ -69,7 +69,7 @@ Rectangle {
         target: colorRect // The aim Asking circular background
         properties: "width,height,radius" // In animation, change the height, width and radius
         from: 0
-        to: rec.width * 3
+        to: rec.width
         duration: 600
         onStopped: {
             colorRect.width = 0
