@@ -14,7 +14,7 @@ Rectangle {
     anchors.leftMargin: 5 * parent.width / 100
     anchors.rightMargin: 5 * parent.width / 100
     anchors.topMargin: 70
-    anchors.bottomMargin: 50 * parent.height / 100
+    anchors.bottomMargin: 10 * parent.height / 100
     width: parent.width
     height: parent.height
     color: "#e3f2fd"
@@ -83,7 +83,7 @@ Rectangle {
             anchors.topMargin: -10
             clip: true
             anchors.leftMargin: 10
-            text: "по 3 ключевым словам"
+            text: "по трем ключевым словам"
             color: "#616161"
             //font.pixelSize: 30
             font.bold: false
@@ -92,25 +92,23 @@ Rectangle {
             }
         }
 
+//        TextInput {
+//            id: txt2
+//            //                width: 80
+//            //                height: 20
+//            text: qsTr("Text Input")
+//            width: parent.width - 10
+//            height: font.pixelSize*6
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            //font.pixelSize: 12
+//        }
+
         Item {
             id : itm
             width: parent.width - 10
             height: txt.height + 28
             clip: true
             anchors.horizontalCenter: parent.horizontalCenter
-            //            function ensureVisible(r)
-            //            {
-            //                if (txt.x >= r.x)
-            //                    txt.x  = r.x;
-            //                else if (txt.x +txt.width <= r.x+r.width)
-            //                    txt.x  = r.x+r.width-txt.width;
-            //                if (txt.y >= r.y){
-            //                    //txt.y = r.y ;
-            //                    rec_line.y = txt.y+txt.height + 8;}
-            //                else if (txt.y+txt.height <= r.y+r.height){
-            //                    //txt.y = r.y+r.height-txt.height;
-            //                    rec_line.y =txt.y+ txt.height + 8;}
-            //            }
 
             Text {
                 id: txt_hint
@@ -119,74 +117,67 @@ Rectangle {
                 font.pixelSize: txt.font.pixelSize - 2
                 text: "через пробелы или ввод"
                 opacity: 0.26
-                //color:  txt.activeFocus ? "#2979ff" :"black"
-                //opacity: txt.activeFocus ? 1 : 0.12//root.is_error ? 1:  txt.activeFocus? 1 : 0.12
-                visible: (txt.text.length < 1) //? true : false
+                visible: !txt.activeFocus
             }
-            TextEdit {
-                id: txt
-                width: parent.width - 10
-                height: font.pixelSize*6
-                anchors.horizontalCenter: parent.horizontalCenter
-                y: 12
-                //height: 19 //lineCount * 19
-                text: "" //root.value
-                //font.pixelSize: 25
-                //focus: true
-                //lineCount: 1
-                //lineCount: 3
-               // selectByKeyboard : true
-                wrapMode: TextEdit.NoWrap //root.multiline ?  TextEdit.Wrap : TextEdit.NoWrap
-                //onCursorRectangleChanged: itm.ensureVisible(cursorRectangle)
+
+            Flickable{
+                anchors.fill: itm
+                //height: 200
+                contentHeight: 30
 
 
-                //                onCursorRectangleChanged: txt.ensureVisible()
-                //                function ensureVisible(){
-                //                    if (txt.x >= txt.cursorRectangle.x)
-                //                        txt.x  = txt.cursorRectangle.x;
-                //                    else if (txt.x+txt.width <= txt.cursorRectangle.x+txt.cursorRectangle.width)
-                //                        txt.x  = txt.cursorRectangle.x+txt.cursorRectangle.width-txt.width;
-                //                    if (txt.y >= txt.cursorRectangle.y)
-                //                        txt.y = txt.cursorRectangle.y;
-                //                    else if (txt.y+txt.height <= txt.cursorRectangle.y +txt.cursorRectangle.height)
-                //                        txt.y = txt.cursorRectangle.y +txt.cursorRectangle.height-txt.height;
-                //                }
+                TextEdit {
+                    id: txt
+                    width: parent.width - 10
+                    height: font.pixelSize*6
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    y: 12
+                    text: ""
+                    enabled: true
+                    opacity: 0.87 //root.disabled? 0.26 : 0.87
+                    wrapMode: TextEdit.NoWrap //root.multiline ?  TextEdit.Wrap : TextEdit.NoWrap
 
-//                ScrollBar.vertical: ScrollBar {
-//                    width: 50
-//                    height:50
+                    ScrollBar.vertical: ScrollBar { id: vbar; active: true }
 
-//                }
 
-                enabled: true
-                opacity: 0.87 //root.disabled? 0.26 : 0.87
+                    //onCursorRectangleChanged: itm.ensureVisible(cursorRectangle)
+                    //                onCursorRectangleChanged: txt.ensureVisible()
+                    //                function ensureVisible(){
+                    //                    if (txt.x >= txt.cursorRectangle.x)
+                    //                        txt.x  = txt.cursorRectangle.x;
+                    //                    else if (txt.x+txt.width <= txt.cursorRectangle.x+txt.cursorRectangle.width)
+                    //                        txt.x  = txt.cursorRectangle.x+txt.cursorRectangle.width-txt.width;
+                    //                    if (txt.y >= txt.cursorRectangle.y)
+                    //                        txt.y = txt.cursorRectangle.y;
+                    //                    else if (txt.y+txt.height <= txt.cursorRectangle.y +txt.cursorRectangle.height)
+                    //                        txt.y = txt.cursorRectangle.y +txt.cursorRectangle.height-txt.height;
+                    //                }
 
-                cursorDelegate: Rectangle {
-                    width: 2
-                    //height: txt.height-3//16
-                    color: "#c2185b" //root.is_error? p2_500 : p1_500
-                    visible: txt.activeFocus
+                    cursorDelegate: Rectangle {
+                        width: 2
+                        color: "#c2185b" //root.is_error? p2_500 : p1_500
+                        visible: txt.activeFocus
 
-                    NumberAnimation on opacity {
-                        id: cursor_blink_anim
-                        from: 6.0
-                        to: -6.0
-                        duration: 3000
-                        loops: -1
+                        NumberAnimation on opacity {
+                            id: cursor_blink_anim
+                            from: 6.0
+                            to: -6.0
+                            duration: 3000
+                            loops: -1
+                        }
+                        onXChanged: cursor_blink_anim.restart()
                     }
-                    onXChanged: cursor_blink_anim.restart()
+                    onCursorRectangleChanged: rec_line.y = cursorRectangle.y + 2* txt.font.pixelSize
+                    //onLineCountChanged: txt.height = txt.lineCount>3 ? txt.font.pixelSize*6 : txt.height
+                    //                function ensureVisible(r) {
+                    //                    txt.x = r.x < txt.width ? 0 : txt.width - r.x - 2
+                    //                }
                 }
-                //documentSizeChanged
-                onCursorRectangleChanged: rec_line.y = cursorRectangle.y + 2* txt.font.pixelSize
-                //onLineCountChanged: txt.height = txt.lineCount>3 ? txt.font.pixelSize*6 : txt.height
-                //                function ensureVisible(r) {
-                //                    txt.x = r.x < txt.width ? 0 : txt.width - r.x - 2
-                //                }
+
             }
 
             Rectangle {
                 id: rec_line
-                //y: txt.y + (txt.font.pixelSize + 8)*txt.lineCount
                 width: parent.width //  - clmn.x
                 height: txt.activeFocus ? 2 : 1
                 color: txt.activeFocus ? "#2979ff" : "black"
@@ -227,7 +218,18 @@ Rectangle {
             id: b
             type: "CANCEL_FINDE_TXT"
             text: "ОТМЕНА"
+            //button_color: "#616161"
+            button_color: "#ffffff"
+            //image_source: "qrc:magnify.svg"
+            //h_size: 0
+            //w_size: 0
+        }
+        EKPSButton {
+            id: b2
+            type: "CLEAR_SEARCH"
+            text: "СТЕРЕТЬ"
             button_color: "#616161"
+            enabled: txt.text.length > 0
             //iconSource: "material/icons/close.svg"
             // ColorOverlay {
             //     anchors.fill: b

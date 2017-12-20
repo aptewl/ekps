@@ -11,11 +11,26 @@ Button {
     property alias image_source: image.source
     property alias h_size: rcbtn.implicitHeight
     property alias w_size: rcbtn.implicitWidth
+    property alias btn_img_visible: co.visible
+
+
+
+
+
+    contentItem: Text {
+        text: bt2.text
+        font: bt2.font
+        opacity: enabled ? 1.0 : 0.3
+        color: bt2.down ? "#2979ff" : "#2196f3"
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        elide: Text.ElideRight
+    }
 
     background: Rectangle {
         id: rcbtn
         implicitHeight: h_size
-        implicitWidth: h_size
+        implicitWidth: w_size
         border.color: "transparent"
         color: "transparent"
     }
@@ -25,9 +40,11 @@ Button {
         source: image_source
         sourceSize.width: parent.width
         sourceSize.height: parent.height
+
     }
     ColorOverlay {
         id: co
+        visible: btn_img_visible
         anchors.fill: bt2
         source: image
         color: button_color
@@ -95,6 +112,12 @@ Button {
                     bt2.state = 'down'
                 }
             }
+
+            if (bt2.type == "CLEAR_SEARCH") {
+                txt.text="";
+                txt.focus = false;
+            }
+
         }
     }
 

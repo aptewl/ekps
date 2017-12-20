@@ -4,8 +4,13 @@ import QtQuick.Controls 2.2
 //import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
+//Flickable{
+//    anchors.fill: parent
+//    contentHeight: rs.height
+
 Rectangle {
     z: 200
+
     id: rs
     opacity: 0
     anchors.fill: parent
@@ -29,6 +34,9 @@ Rectangle {
 
     // property alias kl_also: "Гели"
     // property alias kl_comment: "Предметы перенесены"
+
+
+
     PropertyAnimation {
         id: circleAnimation9
         target: rs // The aim Asking circular background
@@ -282,4 +290,8 @@ Rectangle {
         //     color: "#1976d2"
         // }
     }
+
+
 }
+
+//}
