@@ -169,37 +169,18 @@ QList<QString> Model_EKPS::getWordsFromString(QString search_str)
     }
 
     return list_of_words;
+}
 
+void Model_EKPS::liked_to_NO_liked(QString kl_name)
+{
+    if(kl_name.at(0) != "*"){
+        v_db->Change_is_liked(kl_name.remove(4,kl_name.size()));
+    }else{
+        v_db->Change_is_liked(kl_name.remove(5,kl_name.size()));
+    }
 
-
-
-
-    //        search_str.trimmed();
-    //        if(search_str.isEmpty()){
-    //            return "";
-    //        }else{
-    //     //       for(int i = 1; i <= word_position; i++){
-    //            int m, l;
-    //               for (int k = 0; k < search_str.length(); k++){
-    //    //                if(k < search_str.length()-1){
-    //                        if((search_str.at(k) == " ") && (search_str.at(k+1) == " ")){
-    //    //                        QString s =  search_str.remove(0, k+1);
-    //    //                        if(i == word_position){
-    //    //                            return s;
-    //    //                        }else{
-    //    //                            break;
-    //    //                        }
-    //    //                    }
-    //    //                }else{
-    //    //                    if((search_str.at(k+1) == " ")){
-    //    //                        return search_str.remove(0, k);
-    //    //                    }else{
-    //    //                        return search_str;
-    //    //                    }
-    //    //                }
-    //                }
-    //            //}
-    //        }
+//    тут надо как-то изменить только в этой строке, не меняя всю модель.
+//            например, изменить в Pair, а затем emit
 }
 
 

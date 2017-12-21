@@ -83,6 +83,11 @@ Button {
 
             if (bt2.type == "CANCEL_INFO") {
                 circleAnimation9.start()
+//                console.log(info.is_liked_conrol )
+//                console.log(info.is_liked)
+                if(info.is_liked_conrol != info.is_liked){
+                    console.log("не равны")
+                }
             }
 
             if (bt2.type == "FINDE_DIALOG_SHOW") {

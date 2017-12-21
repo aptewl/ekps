@@ -29,6 +29,7 @@ Rectangle {
 
             //id.gr_name: "Группа 10 Предметы гигиены "
             info.is_liked  = heart.visible
+            info.is_liked_conrol  = heart.visible
             info.kl_name = delegat_text.text
             info.kl_include = classListmodel.getCurKlInclude(delegat_text.text)
             info.adding_includ = "тест"

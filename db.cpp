@@ -81,3 +81,8 @@ QString Database::GetIncludeByKodKl(QString kod)
     //qDebug()<<"================"<<query.value(0).toString();
     return query.value(0).toString();
 }
+
+void Database::Change_is_liked(QString kod)
+{
+    //  реалтизовать изменение в БД
+}

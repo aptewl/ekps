@@ -26,6 +26,7 @@ Rectangle {
     border.width: 2
     //property alias gr_name: "Группа 10 Предметы гигиены "
     property alias is_liked: swch.checked
+    property bool is_liked_conrol
     property alias kl_name: textEdit1.text
     property alias kl_include: textEdit2.text
     property alias adding_includ: textEdit25.text
@@ -280,7 +281,7 @@ Rectangle {
 
     EKPSButton {
         id: b
-        text: 'ОТМЕНА'
+        text: 'ЗАКРЫТЬ'
         type: 'CANCEL_INFO'
         button_color: "#616161"
         anchors.bottom: parent.bottom
