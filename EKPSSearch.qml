@@ -69,7 +69,7 @@ Rectangle {
             anchors.left: parent.left
             clip: true
             anchors.leftMargin: 10
-            text: "Поиск "
+            text: "ПОИСК"
             color: "#616161"
             //font.pixelSize: 30
             font.bold: false
@@ -115,7 +115,7 @@ Rectangle {
                 y: 12
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: txt.font.pixelSize - 2
-                text: "через пробелы или ввод"
+                text: "введите через пробел"
                 opacity: 0.26
                 visible: !txt.activeFocus
             }
@@ -126,7 +126,7 @@ Rectangle {
                 contentHeight: 30
 
 
-                TextEdit {
+                TextInput/*Edit*/ {
                     id: txt
                     width: parent.width - 10
                     height: font.pixelSize*6

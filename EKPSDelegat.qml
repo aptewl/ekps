@@ -28,6 +28,7 @@ Rectangle {
         onClicked: {
 
             //id.gr_name: "Группа 10 Предметы гигиены "
+            info.is_liked  = heart.visible
             info.kl_name = delegat_text.text
             info.kl_include = classListmodel.getCurKlInclude(delegat_text.text)
             info.adding_includ = "тест"
@@ -47,6 +48,7 @@ Rectangle {
 
         Item {
             //сердечко
+            id: heart
             property color overlayColor: "#000000"
             visible: model.Is_liked_Role == 1 ? true : false
             anchors.top: parent.top

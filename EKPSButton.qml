@@ -76,6 +76,9 @@ Button {
 
             if (bt2.type == "CANCEL_FINDE_TXT") {
                 circleAnimation6.start()
+                if(txt.text == ""){
+                    classListmodel.showAll()
+                }
             }
 
             if (bt2.type == "CANCEL_INFO") {

@@ -18,19 +18,19 @@ SwitchDelegate {
     }
 
     indicator: Rectangle {
-        implicitWidth: 48
-        implicitHeight: 26
+        implicitWidth: control.font.pixelSize*1.7//48
+        implicitHeight: control.font.pixelSize //26
         x: control.width - width - control.rightPadding
         y: parent.height / 2 - height / 2
-        radius: 13
+        radius: control.font.pixelSize/2//13
         color: control.checked ? "#2979ff" : "transparent"
         border.color: control.checked ? "#2979ff" : "#cccccc"
 
         Rectangle {
             x: control.checked ? parent.width - width : 0
-            width: 26
-            height: 26
-            radius: 13
+            width: control.font.pixelSize
+            height: control.font.pixelSize
+            radius: control.font.pixelSize/2
             color: control.down ? "#cccccc" : "#ffffff"
             border.color: control.checked ? (control.down ? "#2979ff" : "#2979ff") : "#999999"
         }
