@@ -9,13 +9,13 @@ import QtQuick.Controls.Styles 1.4
 //    contentHeight: rs.height
 
 Rectangle {
-    z: 200
+
 
     id: rs
     opacity: 0
     anchors.fill: parent
     anchors.leftMargin: 5 * parent.width / 100
-    anchors.rightMargin: 5 * parent.height / 100
+    anchors.rightMargin: 5 * parent.width / 100
     anchors.topMargin: 70
     anchors.bottomMargin: 70
     //ScrollView: true
@@ -49,7 +49,7 @@ Rectangle {
     }
 
     MouseArea {
-        anchors.fill: root
+        anchors.fill: parent
     }
 
 

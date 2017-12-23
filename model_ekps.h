@@ -29,7 +29,7 @@ public:
 //    Q_INVOKABLE QString getCurKlassName(QString text);
     Q_INVOKABLE QString getCurKlInclude(QString text);
     QList<QString> getWordsFromString(QString search_str);
-    void liked_to_NO_liked(QString kl_name);
+    Q_INVOKABLE void liked_to_NO_liked(QString kl_name, bool is_liked);
 //signals:
 //    void modelChanged();
 

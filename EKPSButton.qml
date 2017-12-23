@@ -87,6 +87,7 @@ Button {
 //                console.log(info.is_liked)
                 if(info.is_liked_conrol != info.is_liked){
                     console.log("не равны")
+                    classListmodel.liked_to_NO_liked(info.kl_name, info.is_liked)
                 }
             }
 

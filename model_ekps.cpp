@@ -171,16 +171,25 @@ QList<QString> Model_EKPS::getWordsFromString(QString search_str)
     return list_of_words;
 }
 
-void Model_EKPS::liked_to_NO_liked(QString kl_name)
+void Model_EKPS::liked_to_NO_liked(QString kl_name, bool is_liked)
 {
-    if(kl_name.at(0) != "*"){
-        v_db->Change_is_liked(kl_name.remove(4,kl_name.size()));
-    }else{
-        v_db->Change_is_liked(kl_name.remove(5,kl_name.size()));
-    }
 
-//    тут надо как-то изменить только в этой строке, не меняя всю модель.
-//            например, изменить в Pair, а затем emit
+    //changing model
+    QPair<QString, int> pair(kl_name,0);
+    QPair<QString, int> pair2(kl_name,1);
+    if(is_liked){
+        listOfPairs.replace(listOfPairs.indexOf(pair),pair2 );
+        emit dataChanged( index(listOfPairs.indexOf(pair2),0),index(listOfPairs.indexOf(pair2),0));
+    }else{
+        listOfPairs.replace(listOfPairs.indexOf(pair2),pair );
+        emit dataChanged( index(listOfPairs.indexOf(pair),0),index(listOfPairs.indexOf(pair),0));
+    }
+    //changing db
+    if(kl_name.at(0) != "*"){
+        v_db->Change_is_liked(kl_name.remove(4,kl_name.size()),is_liked);
+    }else{
+        v_db->Change_is_liked(kl_name.remove(5,kl_name.size()),is_liked);
+    }
 }
 
 

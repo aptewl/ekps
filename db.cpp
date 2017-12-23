@@ -82,7 +82,17 @@ QString Database::GetIncludeByKodKl(QString kod)
     return query.value(0).toString();
 }
 
-void Database::Change_is_liked(QString kod)
+void Database::Change_is_liked(QString kod, bool is_liked)
 {
-    //  реалтизовать изменение в БД
+    QSqlQuery query;
+    int val_is_like;
+    if( is_liked){
+        val_is_like = 1;
+    }else{
+        val_is_like = 0;
+    }
+    query.prepare("UPDATE KL SET is_like = :val WHERE KL.kl_kod like :kod");
+    query.bindValue(":val", val_is_like);
+    query.bindValue(":kod", kod);
+    query.exec();
 }

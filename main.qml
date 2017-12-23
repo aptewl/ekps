@@ -83,6 +83,7 @@ Window {
         //подробности о классе
         EKPSInfo {
             id: info
+             z: 200
         }
 
 
