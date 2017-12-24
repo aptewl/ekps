@@ -34,9 +34,11 @@ Rectangle {
             info.kl_include = classListmodel.getCurKlInclude(delegat_text.text)
             info.adding_includ = "тест"
             info.kl_not = "Электрические боитвы"
-            info.replased = ""
-            //id.kl_also: "Гели"
+            info.replased = "предметы перенесены в класс 2010"
             info.opacity = 1
+            fl.visible = true
+            fl.z = 800
+            fl.contentY = root.y
             circleAnimation2.start()
         }
         onPressed: {

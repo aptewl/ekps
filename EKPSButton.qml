@@ -83,12 +83,16 @@ Button {
 
             if (bt2.type == "CANCEL_INFO") {
                 circleAnimation9.start()
-//                console.log(info.is_liked_conrol )
-//                console.log(info.is_liked)
                 if(info.is_liked_conrol != info.is_liked){
                     console.log("не равны")
                     classListmodel.liked_to_NO_liked(info.kl_name, info.is_liked)
                 }
+                info.kl_name = ""
+                fl.visible = false
+                info.kl_include = ""
+                info.adding_includ = ""
+                info.kl_not = ""
+                info.replased = ""
             }
 
             if (bt2.type == "FINDE_DIALOG_SHOW") {

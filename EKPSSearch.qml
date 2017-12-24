@@ -120,10 +120,10 @@ Rectangle {
                 visible: !txt.activeFocus
             }
 
-            Flickable{
-                anchors.fill: itm
-                //height: 200
-                contentHeight: 30
+//            Flickable{
+//                anchors.fill: itm
+//                //height: 200
+//                contentHeight: 30
 
 
                 TextInput/*Edit*/ {
@@ -136,8 +136,11 @@ Rectangle {
                     enabled: true
                     opacity: 0.87 //root.disabled? 0.26 : 0.87
                     wrapMode: TextEdit.NoWrap //root.multiline ?  TextEdit.Wrap : TextEdit.NoWrap
+                    //readOnly: true
+                    //activeFocusOnPress: false
+                    selectByMouse: true
 
-                    ScrollBar.vertical: ScrollBar { id: vbar; active: true }
+                    //ScrollBar.vertical: ScrollBar { id: vbar; active: true }
 
 
                     //onCursorRectangleChanged: itm.ensureVisible(cursorRectangle)
@@ -174,7 +177,7 @@ Rectangle {
                     //                }
                 }
 
-            }
+//            }
 
             Rectangle {
                 id: rec_line

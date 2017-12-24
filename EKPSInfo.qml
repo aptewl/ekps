@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick 2.9
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.2
 //import QtQuick.Controls 1.4
@@ -12,8 +12,17 @@ Rectangle {
 
 
     id: rs
+    //z:500
     opacity: 0
-    anchors.fill: parent
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    //anchors.bottom: b.bottom
+    height: mo.height+ lb.height+ swch.height+
+            mo2.height+ lb2.height+ mo25.height+
+            lb25.height+  mo3.height+ lb3.height+
+            mo4.height/*+ lb4.height*/ + 3*b.height
+
     anchors.leftMargin: 5 * parent.width / 100
     anchors.rightMargin: 5 * parent.width / 100
     anchors.topMargin: 70
@@ -34,14 +43,12 @@ Rectangle {
     property alias replased: textEdit4.text
 
 
-    // property alias kl_also: "Гели"
-    // property alias kl_comment: "Предметы перенесены"
 
 
 
     PropertyAnimation {
         id: circleAnimation9
-        target: rs // The aim Asking circular background
+        target: rs// The aim Asking circular background
         properties: "opacity" // In animation, change the height, width and radius
         from: 1 // Change the settings from 0 pixels ...
         to: 0
@@ -60,7 +67,7 @@ Rectangle {
         anchors.fill: parent
         anchors.topMargin: 30
         spacing: 10
-        clip: true
+        //clip: true
 
         //        Switch {
         //            id: switch1
@@ -121,11 +128,50 @@ Rectangle {
                 width: mo.width
                 height: mo.height
                 //font.pixelSize: 12
-                focus: true
-                text: "adfsdfasgadhf"
-                cursorVisible: false
+                //focus: true
+                text: ""
+                cursorVisible: true
                 readOnly: true
-                activeFocusOnPress: true
+                selectByMouse: true
+            }
+        }
+        //-----------5-------------
+//        Label {
+//            id: lb4
+//            clip: true
+//            text: "Перенесено в"
+//            anchors.left: parent.left
+//            anchors.leftMargin: 10
+//            color: "#ffcc33"
+//            font.bold: true
+//            visible: textEdit4.text != ""
+//        }
+        Rectangle {
+            id: mo4
+            width: 95 * parent.width/100
+            height: textEdit4.contentHeight + 10
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            border.width: 1
+            border.color: "#ff3300"
+            radius: 10
+            clip: true
+            visible: textEdit4.text != ""
+            TextEdit {
+                id: textEdit4
+                anchors.fill: parent
+                wrapMode: TextEdit.Wrap
+                width: mo4.width
+                //height: mo4.height
+                //font.: 12
+                focus: true
+                text: ""
+                color: "#ff3300"
+                //cursorVisible: false
+                readOnly: true
+                //selectByMouse: true
             }
         }
         //-----3-------------------
@@ -161,8 +207,9 @@ Rectangle {
                 //font.pixelSize: 12
                 focus: true
                 text: kl_name
+                //cursorVisible: false
                 readOnly: true
-                activeFocusOnPress: false
+                //selectByMouse: true
             }
         }
         //-----2.5-------------------
@@ -198,8 +245,9 @@ Rectangle {
                 //font.pixelSize: 12
                 focus: true
                 text: adding_includ
+                //cursorVisible: false
                 readOnly: true
-                activeFocusOnPress: false
+                //selectByMouse: true
             }
         }
         //-------4-----------------
@@ -235,47 +283,12 @@ Rectangle {
                 //font.pixelSize: 12
                 focus: true
                 text: "adfsdfasgadhf"
+                //cursorVisible: false
                 readOnly: true
-                activeFocusOnPress: false
+                //selectByMouse: true
             }
         }
-        //-----------5-------------
-        Label {
-            id: lb4
-            clip: true
-            text: "Перенесено в"
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            color: "#616161"
-            font.bold: true
-            visible: textEdit4.text != ""
-        }
-        Rectangle {
-            id: mo4
-            width: 95 * parent.width/100
-            height: textEdit3.contentHeight + 10
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-            anchors.right: parent.right
-            anchors.rightMargin: 10
-            border.width: 1
-            border.color: "#2979ff"
-            radius: 10
-            clip: true
-            visible: textEdit4.text != ""
-            TextEdit {
-                id: textEdit4
-                anchors.fill: parent
-                wrapMode: TextEdit.Wrap
-                width: mo3.width
-                //height: mo.height
-                //font.pixelSize: 12
-                focus: true
-                text: "adfsdfasgadhf"
-                readOnly: true
-                activeFocusOnPress: false
-            }
-        }
+
 
     }
 

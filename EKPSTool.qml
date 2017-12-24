@@ -63,7 +63,7 @@ Rectangle {
         color: "#ffffff"
         text: qsTr("Единый кодификатор предметов снабжения")
         anchors.left: parent.left
-        anchors.leftMargin: 22
+        //anchors.leftMargin: 22
         fontSizeMode: Text.HorizontalFit
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
