@@ -44,10 +44,10 @@ Window {
 
             }
 
-            FontLoader {
-                id: localFont
-                source: "qrc:Roboto-Regular.ttf"
-            }
+//            FontLoader {
+//                id: localFont
+//                source: "qrc:Roboto-Regular.ttf"
+//            }
 
             delegate: Component {
 
@@ -62,10 +62,12 @@ Window {
                         opacity: 0.7
                         renderType: Text.NativeRendering
                         color: "white"
-                        font {
-                            family: localFont.name
-                            //pointSize: 42
-                        }
+                        //font.family: localFont.name
+
+//                        {
+//                            family: localFont.name
+//                            //pointSize: 42
+//                        }
                         anchors.leftMargin: 50
                         anchors.fill: parent
                         verticalAlignment: Text.AlignVCenter

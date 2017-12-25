@@ -32,9 +32,9 @@ Rectangle {
             info.is_liked_conrol  = heart.visible
             info.kl_name = delegat_text.text
             info.kl_include = classListmodel.getCurKlInclude(delegat_text.text)
-            info.adding_includ = "тест"
-            info.kl_not = "Электрические боитвы"
-            info.replased = "предметы перенесены в класс 2010"
+            info.adding_includ = classListmodel.getCurKlAddInclude(delegat_text.text)
+            info.kl_not = classListmodel.getCurKlNotInclude(delegat_text.text)
+            info.replased = classListmodel.getCurKlReplaced(delegat_text.text)
             info.opacity = 1
             fl.visible = true
             fl.z = 800

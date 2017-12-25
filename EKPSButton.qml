@@ -79,6 +79,7 @@ Button {
                 if(txt.text == ""){
                     classListmodel.showAll()
                 }
+                txt.text = ""
             }
 
             if (bt2.type == "CANCEL_INFO") {
@@ -104,6 +105,7 @@ Button {
                     circleAnimation3.start()
                     //txt.editingFinished()
                     classListmodel.searchContext(txt.text)
+                    txt.text = ""
                 }
             }
 

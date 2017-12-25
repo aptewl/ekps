@@ -6,7 +6,7 @@ import QtQuick.Controls.Styles 1.4
 Rectangle {
     id: toolbar
     width: parent.width
-    height: parent.height / 7
+    height: bt.height + text2.height + 10
     color: "#2979ff"
     border.width: 0
     clip: true
@@ -62,9 +62,11 @@ Rectangle {
         id: text2
         color: "#ffffff"
         text: qsTr("Единый кодификатор предметов снабжения")
+        clip: true
         anchors.left: parent.left
+        anchors.leftMargin: 5
         //anchors.leftMargin: 22
-        fontSizeMode: Text.HorizontalFit
+        //fontSizeMode: Text.HorizontalFit
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         anchors.top: text1.bottom

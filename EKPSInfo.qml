@@ -130,6 +130,7 @@ Rectangle {
                 //font.pixelSize: 12
                 //focus: true
                 text: ""
+                horizontalAlignment: Text.AlignLeft
                 cursorVisible: true
                 readOnly: true
                 selectByMouse: true
@@ -207,6 +208,7 @@ Rectangle {
                 //font.pixelSize: 12
                 focus: true
                 text: kl_name
+                horizontalAlignment: Text.AlignLeft
                 //cursorVisible: false
                 readOnly: true
                 //selectByMouse: true

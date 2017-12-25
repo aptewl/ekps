@@ -134,6 +134,33 @@ QString Model_EKPS::getCurKlInclude(QString text)
     }
 }
 
+QString Model_EKPS::getCurKlAddInclude(QString text)
+{
+    if(text.at(0) != "*"){
+        return this->v_db->GetAddIncludeByKodKl(text.remove(4,text.size()));
+    }else{
+        return this->v_db->GetAddIncludeByKodKl(text.remove(5,text.size()));
+    }
+}
+
+QString Model_EKPS::getCurKlNotInclude(QString text)
+{
+    if(text.at(0) != "*"){
+        return this->v_db->GetNotIncludeByKodKl(text.remove(4,text.size()));
+    }else{
+        return this->v_db->GetNotIncludeByKodKl(text.remove(5,text.size()));
+    }
+}
+
+QString Model_EKPS::getCurKlReplaced(QString text)
+{
+    if(text.at(0) != "*"){
+        return this->v_db->GetReplacedByKodKl(text.remove(4,text.size()));
+    }else{
+        return this->v_db->GetReplacedByKodKl(text.remove(5,text.size()));
+    }
+}
+
 QList<QString> Model_EKPS::getWordsFromString(QString search_str)
 {
     search_str.trimmed();

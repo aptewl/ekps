@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick 2.9
 import QtGraphicalEffects 1.0
 //import QtQuick.Controls 2.2
 import QtQuick.Controls 2.2
@@ -9,7 +9,7 @@ import QtQuick.Controls.Styles 1.4
 Rectangle {
     id: search
     //modal: true
-    z: 10
+    z: 900
     anchors.fill: parent
     anchors.leftMargin: 5 * parent.width / 100
     anchors.rightMargin: 5 * parent.width / 100
@@ -26,6 +26,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: search
+        anchors.margins: -200
 
 
     }
@@ -73,9 +74,9 @@ Rectangle {
             color: "#616161"
             //font.pixelSize: 30
             font.bold: false
-            FontLoader {
-                source: "./Roboto-Regular.ttf"
-            }
+            //            FontLoader {
+            //                source: "./Roboto-Regular.ttf"
+            //            }
         }
         Label {
             id: lb3
@@ -87,21 +88,21 @@ Rectangle {
             color: "#616161"
             //font.pixelSize: 30
             font.bold: false
-            FontLoader {
-                source: "./Roboto-Regular.ttf"
-            }
+            //            FontLoader {
+            //                source: "./Roboto-Regular.ttf"
+            //            }
         }
 
-//        TextInput {
-//            id: txt2
-//            //                width: 80
-//            //                height: 20
-//            text: qsTr("Text Input")
-//            width: parent.width - 10
-//            height: font.pixelSize*6
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            //font.pixelSize: 12
-//        }
+        //        TextInput {
+        //            id: txt2
+        //            //                width: 80
+        //            //                height: 20
+        //            text: qsTr("Text Input")
+        //            width: parent.width - 10
+        //            height: font.pixelSize*6
+        //            anchors.horizontalCenter: parent.horizontalCenter
+        //            //font.pixelSize: 12
+        //        }
 
         Item {
             id : itm
@@ -117,67 +118,68 @@ Rectangle {
                 font.pixelSize: txt.font.pixelSize - 2
                 text: "введите через пробел"
                 opacity: 0.26
-                visible: !txt.activeFocus
+                visible: (txt.contentWidth == 0)
             }
 
-//            Flickable{
-//                anchors.fill: itm
-//                //height: 200
-//                contentHeight: 30
+            //            Flickable{
+            //                anchors.fill: itm
+            //                //height: 200
+            //                contentHeight: 30
 
 
-                TextInput/*Edit*/ {
-                    id: txt
-                    width: parent.width - 10
-                    height: font.pixelSize*6
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    y: 12
-                    text: ""
-                    enabled: true
-                    opacity: 0.87 //root.disabled? 0.26 : 0.87
-                    wrapMode: TextEdit.NoWrap //root.multiline ?  TextEdit.Wrap : TextEdit.NoWrap
-                    //readOnly: true
-                    //activeFocusOnPress: false
-                    selectByMouse: true
+            TextInput/*Edit*/ {
+                id: txt
+                width: parent.width - 10
+                height: font.pixelSize*6
+                anchors.horizontalCenter: parent.horizontalCenter
+                y: 12
+                text: ""
+                enabled: true
+                opacity: 0.87 //root.disabled? 0.26 : 0.87
+                // wrapMode: TextEdit.NoWrap //root.multiline ?  TextEdit.Wrap : TextEdit.NoWrap
+                //readOnly: true
+                activeFocusOnPress: true
+                selectByMouse: true
+                //activeFocus:true
 
-                    //ScrollBar.vertical: ScrollBar { id: vbar; active: true }
+                //ScrollBar.vertical: ScrollBar { id: vbar; active: true }
 
 
-                    //onCursorRectangleChanged: itm.ensureVisible(cursorRectangle)
-                    //                onCursorRectangleChanged: txt.ensureVisible()
-                    //                function ensureVisible(){
-                    //                    if (txt.x >= txt.cursorRectangle.x)
-                    //                        txt.x  = txt.cursorRectangle.x;
-                    //                    else if (txt.x+txt.width <= txt.cursorRectangle.x+txt.cursorRectangle.width)
-                    //                        txt.x  = txt.cursorRectangle.x+txt.cursorRectangle.width-txt.width;
-                    //                    if (txt.y >= txt.cursorRectangle.y)
-                    //                        txt.y = txt.cursorRectangle.y;
-                    //                    else if (txt.y+txt.height <= txt.cursorRectangle.y +txt.cursorRectangle.height)
-                    //                        txt.y = txt.cursorRectangle.y +txt.cursorRectangle.height-txt.height;
-                    //                }
+                //onCursorRectangleChanged: itm.ensureVisible(cursorRectangle)
+                //                onCursorRectangleChanged: txt.ensureVisible()
+                //                function ensureVisible(){
+                //                    if (txt.x >= txt.cursorRectangle.x)
+                //                        txt.x  = txt.cursorRectangle.x;
+                //                    else if (txt.x+txt.width <= txt.cursorRectangle.x+txt.cursorRectangle.width)
+                //                        txt.x  = txt.cursorRectangle.x+txt.cursorRectangle.width-txt.width;
+                //                    if (txt.y >= txt.cursorRectangle.y)
+                //                        txt.y = txt.cursorRectangle.y;
+                //                    else if (txt.y+txt.height <= txt.cursorRectangle.y +txt.cursorRectangle.height)
+                //                        txt.y = txt.cursorRectangle.y +txt.cursorRectangle.height-txt.height;
+                //                }
 
-                    cursorDelegate: Rectangle {
-                        width: 2
-                        color: "#c2185b" //root.is_error? p2_500 : p1_500
-                        visible: txt.activeFocus
+                cursorDelegate: Rectangle {
+                    width: 2
+                    color: "#c2185b" //root.is_error? p2_500 : p1_500
+                    visible: txt.activeFocus
 
-                        NumberAnimation on opacity {
-                            id: cursor_blink_anim
-                            from: 6.0
-                            to: -6.0
-                            duration: 3000
-                            loops: -1
-                        }
-                        onXChanged: cursor_blink_anim.restart()
+                    NumberAnimation on opacity {
+                        id: cursor_blink_anim
+                        from: 6.0
+                        to: -6.0
+                        duration: 3000
+                        loops: -1
                     }
-                    onCursorRectangleChanged: rec_line.y = cursorRectangle.y + 2* txt.font.pixelSize
-                    //onLineCountChanged: txt.height = txt.lineCount>3 ? txt.font.pixelSize*6 : txt.height
-                    //                function ensureVisible(r) {
-                    //                    txt.x = r.x < txt.width ? 0 : txt.width - r.x - 2
-                    //                }
+                    onXChanged: cursor_blink_anim.restart()
                 }
+                onCursorRectangleChanged: rec_line.y = cursorRectangle.y + 2* txt.font.pixelSize
+                //onLineCountChanged: txt.height = txt.lineCount>3 ? txt.font.pixelSize*6 : txt.height
+                //                function ensureVisible(r) {
+                //                    txt.x = r.x < txt.width ? 0 : txt.width - r.x - 2
+                //                }
+            }
 
-//            }
+            //            }
 
             Rectangle {
                 id: rec_line
@@ -232,7 +234,7 @@ Rectangle {
             type: "CLEAR_SEARCH"
             text: "СТЕРЕТЬ"
             button_color: "#616161"
-            enabled: txt.text.length > 0
+            enabled: txt.contentWidth > 0
             //iconSource: "material/icons/close.svg"
             // ColorOverlay {
             //     anchors.fill: b

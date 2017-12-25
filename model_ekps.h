@@ -28,6 +28,9 @@ public:
     Q_INVOKABLE void searchContext(QString search_str);
 //    Q_INVOKABLE QString getCurKlassName(QString text);
     Q_INVOKABLE QString getCurKlInclude(QString text);
+    Q_INVOKABLE QString getCurKlAddInclude(QString text);
+    Q_INVOKABLE QString getCurKlNotInclude(QString text);
+    Q_INVOKABLE QString getCurKlReplaced(QString text);
     QList<QString> getWordsFromString(QString search_str);
     Q_INVOKABLE void liked_to_NO_liked(QString kl_name, bool is_liked);
 //signals:
