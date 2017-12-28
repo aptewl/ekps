@@ -4,10 +4,17 @@
 
 Database::Database(QString path_db)
 {
-    QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
+    //QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
+    QSqlDatabase sdb = QSqlDatabase::addDatabase("SQLITECIPHER");
     sdb.setDatabaseName(path_db);
+    sdb.setPassword("my_password");
+    //sdb.setConnectOptions("QSQLITE_CREATE_KEY");
+    //sdb.setConnectOptions("QSQLITE_UPDATE_KEY=new_password"); // set new password
+    //sdb.setConnectOptions("QSQLITE_REMOVE_KEY");
     if (!sdb.open()) {
         qDebug() << sdb.lastError().text()<<"**********************" ;
+        qDebug() << "Can not open connection: " << sdb.lastError().driverText();
+        //exit(CONNECTION_FAILED);
     }
 }
 

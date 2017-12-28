@@ -6,7 +6,7 @@ import QtQuick.Controls.Styles 1.4
 Rectangle {
     id: toolbar
     width: parent.width
-    height: bt.height + text2.height + 10
+    height: bt.height + 2*text2.height
     color: "#2979ff"
     border.width: 0
     clip: true

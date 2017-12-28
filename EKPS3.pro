@@ -2,7 +2,7 @@ QT += quick svg xml sql
 CONFIG += c++11
 
 
-deployment.files += ekps_db.sqlite
+deployment.files += ekps_db1
 deployment.path = /assets
 INSTALLS += deployment
 

@@ -9,27 +9,25 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-
-    QFile dfile("./ekps_db.sqlite");
+    // DataBase conection settings
+    QFile dfile("./ekps_db1");
     if (!dfile.exists())
     {
-         QFile::copy(":/ekps_db", "./ekps_db.sqlite");
-         QFile::setPermissions("./ekps_db.sqlite",QFile::WriteOwner | QFile::ReadOwner);
+        QFile::copy(":/ekps_db1", "./ekps_db1");
+        QFile::setPermissions("./ekps_db1",QFile::WriteOwner | QFile::ReadOwner);
     }
+    Database* db= new Database("./ekps_db1");
 
-    Database* db= new Database("./ekps_db.sqlite");
-    //Model_EKPS*  model = new Model_EKPS(db.GetAllData());
-    //Model_EKPS*  model = new Model_EKPS(db.GetAllDataPair());
+    // Model settings
     Model_EKPS*  model = new Model_EKPS(db);
-    //model->modelReset();
 
+    // QML  settings
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("classListmodel", model);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-
     if (engine.rootObjects().isEmpty())
         return -1;
 
+    // App start
     return app.exec();
 }
