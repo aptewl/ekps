@@ -10,13 +10,16 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     // DataBase conection settings
-    QFile dfile("./ekps_db1");
+    QFile dfile("./ekps_db");
     if (!dfile.exists())
     {
-        QFile::copy(":/ekps_db1", "./ekps_db1");
-        QFile::setPermissions("./ekps_db1",QFile::WriteOwner | QFile::ReadOwner);
+        QFile::copy(":/ekps_db3", "./ekps_db");
+        QFile::setPermissions("./ekps_db",QFile::WriteOwner | QFile::ReadOwner);
     }
-    Database* db= new Database("./ekps_db1");
+    Database* db= new Database("./ekps_db");
+
+    //upper DB; tmp function
+    //db->UpperAllDB();
 
     // Model settings
     Model_EKPS*  model = new Model_EKPS(db);
@@ -29,5 +32,4 @@ int main(int argc, char *argv[])
         return -1;
 
     // App start
-    return app.exec();
-}
+    return app.exec();}

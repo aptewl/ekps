@@ -16,7 +16,9 @@ public:
     QString GetAddIncludeByKodKl(QString kod);
     QString GetNotIncludeByKodKl(QString kod);
     QString GetReplacedByKodKl(QString kod);
+    QString  pswd();
     void Change_is_liked(QString kod, bool is_liked);
+    void UpperAllDB();
 };
 
 #endif // DB_H

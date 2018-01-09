@@ -7,7 +7,7 @@ Database::Database(QString path_db)
     //QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
     QSqlDatabase sdb = QSqlDatabase::addDatabase("SQLITECIPHER");
     sdb.setDatabaseName(path_db);
-    sdb.setPassword("my_password");
+    sdb.setPassword(pswd());
     //sdb.setConnectOptions("QSQLITE_CREATE_KEY");
     //sdb.setConnectOptions("QSQLITE_UPDATE_KEY=new_password"); // set new password
     //sdb.setConnectOptions("QSQLITE_REMOVE_KEY");
@@ -62,140 +62,140 @@ QList<QPair<QString, int> > Database::GetContextDataPair(QString s1, QString s2,
                   " from KL where "
                   " /****************************************/  "
                   "  (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.kl_kod like :s3)  "
-                  " OR ( KL.kl_name like :s1 AND KL.kl_name like :s2 AND KL.kl_name like :s3)  "
-                  " OR ( KL.kl_prim like :s1 AND KL.kl_prim like :s2 AND KL.kl_prim like :s3)  "
-                  " OR ( KL.kl_adding_includ like :s1 AND KL.kl_adding_includ like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR ( KL.kl_not like :s1 AND KL.kl_not like :s2 AND KL.kl_not like :s3)  "
+                  " OR ( KL.d_kl_name like :s1 AND KL.d_kl_name like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR ( KL.d_kl_prim like :s1 AND KL.d_kl_prim like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR ( KL.d_kl_adding_includ like :s1 AND KL.d_kl_adding_includ like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR ( KL.d_kl_not like :s1 AND KL.d_kl_not like :s2 AND KL.d_kl_not like :s3)  "
                   " /****************************************/ "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_name like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_name like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_name like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_not  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_not  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_not  like :s2 AND KL.kl_adding_includ like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_adding_includ like :s3)  "
                   "    "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_not  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_not  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_not  like :s2 AND KL.kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_prim  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_not  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_adding_includ like :s3)  "
                   "   "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_kod like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_kod like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_kod like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_name  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_name  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_name  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_not  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_not  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_not  like :s2 AND KL.kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_name  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_name  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_name  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_not  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_adding_includ like :s3)  "
                   "   "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_kod like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_kod like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_kod like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_name  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_name  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_name  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_not  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_not  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_not  like :s2 AND KL.kl_prim like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_name  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_name  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_name  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_prim  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_not  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_prim like :s3)  "
                   "   "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_kod like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_kod like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_kod like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_name  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_name  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_name  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_prim like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_name  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_name  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_name  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_prim  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_prim like :s3)  "
                   " /****************************************/ "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_name like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_name like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_prim like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_adding_includ like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_not  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_kod like  :s1  AND KL.kl_not like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_name like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_prim like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_adding_includ like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.kl_kod like  :s1  AND KL.d_kl_not like :s2 AND KL.kl_kod like :s3)  "
                   "   "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_name like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_name like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_prim like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_name like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_adding_includ like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_not  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_name like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_name like  :s1  AND KL.kl_not like :s2 AND KL.kl_name like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_name like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_prim like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_adding_includ like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_name like  :s1  AND KL.d_kl_not like :s2 AND KL.d_kl_name like :s3)  "
                   "    "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_name like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_prim like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_name like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_kod  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_kod like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_prim like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_prim like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_adding_includ like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_not  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_prim like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_prim like  :s1  AND KL.kl_not like :s2 AND KL.kl_prim like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_prim like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.kl_kod  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_prim like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_prim like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_adding_includ like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_prim like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_prim like  :s1  AND KL.d_kl_not like :s2 AND KL.d_kl_prim like :s3)  "
                   "   "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_name like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_adding_includ like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_name like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_adding_includ like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_prim like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_kod  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_kod like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_adding_includ like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_not  like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_adding_includ like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_adding_includ like  :s1  AND KL.kl_not like :s2 AND KL.kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_adding_includ like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_adding_includ like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_prim like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.kl_kod  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_adding_includ like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_not  like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_adding_includ like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_adding_includ like  :s1  AND KL.d_kl_not like :s2 AND KL.d_kl_adding_includ like :s3)  "
                   "    "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_name like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_not like :s2 AND KL.kl_name like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_name like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_prim  like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_not like :s2 AND KL.kl_prim like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_prim like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_adding_includ  like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_not like :s2 AND KL.kl_adding_includ like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_adding_includ like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_kod  like :s2 AND KL.kl_kod like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_kod like :s2 AND KL.kl_not like :s3)  "
-                  " OR (KL.kl_not like  :s1  AND KL.kl_not like :s2 AND KL.kl_kod like :s3)  ");
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_not like :s2 AND KL.d_kl_name like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_name like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_prim  like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_not like :s2 AND KL.d_kl_prim like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_prim like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_adding_includ  like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_not like :s2 AND KL.d_kl_adding_includ like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_adding_includ like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.kl_kod  like :s2 AND KL.kl_kod like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.kl_kod like :s2 AND KL.d_kl_not like :s3)  "
+                  " OR (KL.d_kl_not like  :s1  AND KL.d_kl_not like :s2 AND KL.kl_kod like :s3)  ");
     query.bindValue(":s1", "%"+s1+"%");
     query.bindValue(":s2", "%"+s2+"%");
     query.bindValue(":s3", "%"+s3+"%");
@@ -252,6 +252,15 @@ QString Database::GetReplacedByKodKl(QString kod)
     return query.value(0).toString();
 }
 
+QString Database::pswd()
+{
+    //    QFile file("./pswd.txt");
+    //    if (!file.open(QIODevice::ReadOnly))
+    //        return "";
+    //    return QString(file.readAll());
+    return "34edT_45_yImmn_EKPS_ddD-0";
+}
+
 void Database::Change_is_liked(QString kod, bool is_liked)
 {
     QSqlQuery query;
@@ -266,3 +275,44 @@ void Database::Change_is_liked(QString kod, bool is_liked)
     query.bindValue(":kod", kod);
     query.exec();
 }
+
+void Database::UpperAllDB()
+{
+    QSqlQuery query,query2;
+    query.prepare("select distinct KL.kl_kod ,KL.kl_name, KL.kl_prim, KL.kl_adding_includ, KL.kl_not from KL");
+    query.exec();
+    //    int i = 0;
+    while (query.next()) {
+        query2.clear();
+        query2.prepare("update KL set d_kl_name = :name, d_kl_prim = :prim, d_kl_adding_includ = :incl , d_kl_not = :notk where KL.kl_kod like :kod ");
+        query2.bindValue(":kod", query.value(0).toString().toUpper());
+        query2.bindValue(":name", query.value(1).toString().toUpper());
+        query2.bindValue(":prim", query.value(2).toString().toUpper());
+        query2.bindValue(":incl", query.value(3).toString().toUpper());
+        query2.bindValue(":notk", query.value(4).toString().toUpper());
+        query2.exec();
+        //        qDebug()<<"======" << i << "-----"<< query.value(1).toString().toUpper();
+        //        i++;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

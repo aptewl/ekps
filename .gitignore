@@ -4,4 +4,7 @@
 *.qrc
 *.autosave
 ekps_db
-
+ekps_db1
+ekps_db3
+ekps_db_oldest
+pswd.txt
