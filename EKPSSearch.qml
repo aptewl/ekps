@@ -210,7 +210,7 @@ Rectangle {
             type: 'FINDE_TXT'
             text: "ПОИСК"
             button_color: "#616161"
-            enabled: txt.text.length > 0
+            enabled: txt.contentWidth > 0
             //iconSource: "material/icons/close.svg"
             // ColorOverlay {
             //     anchors.fill: b1

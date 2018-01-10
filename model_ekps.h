@@ -1,7 +1,7 @@
 #ifndef MODEL_EKPS_H
 #define MODEL_EKPS_H
 
-#include <QObject>
+//#include <QObject>
 #include <QAbstractTableModel>
 #include "db.h"
 

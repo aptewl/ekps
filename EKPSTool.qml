@@ -54,6 +54,7 @@ Rectangle {
         type: 'LIKE'
         button_color: "#ffffff"
         image_source: "qrc:heart.svg"
+        //image_source: "qrc:star.svg"
         h_size: parent.height / 3
         w_size: 1.2*h_size
     }
