@@ -20,11 +20,11 @@ Rectangle {
         type: 'MENU_WIEW'
         button_color: "#ffffff"
         image_source: "qrc:icons/google_icons/menu.svg"
-        h_size: 50//parent.height / 3  //min 40, max 56
-        w_size: 50//1.2*h_size         //min 40, max 56
-        // if it is necessary to take into account the sizes
+        h_size: parent.height / 3  //min 40, max 56
+        w_size: 1.2*h_size         //min 40, max 56
+        // it is necessary to take into account the sizes
         // of the screens of different telephons and tablets,
-        // then to dissolve
+
     }
 
     Text {

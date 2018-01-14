@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QFile dfile("./ekps_db");
     if (!dfile.exists())
     {
-        QFile::copy(":database/ekps_db3", "./ekps_db");
+        QFile::copy(":database/ekps_db", "./ekps_db");
         QFile::setPermissions("./ekps_db",QFile::WriteOwner | QFile::ReadOwner);
     }
     Database* db= new Database("./ekps_db");

@@ -9,7 +9,7 @@ Database::Database(QString path_db)
     sdb.setDatabaseName(path_db);
     sdb.setPassword(pswd());
     //sdb.setConnectOptions("QSQLITE_CREATE_KEY");
-    //sdb.setConnectOptions("QSQLITE_UPDATE_KEY=new_password"); // set new password
+    //sdb.setConnectOptions("QSQLITE_UPDATE_KEY=new_pass"); // set new password
     //sdb.setConnectOptions("QSQLITE_REMOVE_KEY");
     if (!sdb.open()) {
         qDebug() << sdb.lastError().text()<<"**********************" ;
@@ -251,7 +251,7 @@ QString Database::GetReplacedByKodKl(QString kod)
 
 QString Database::pswd()
 {
-    //to obtain a password, write to e-mail with your name and purpose
+    //to obtain a password, write to me on e-mail with your name and purpose
     return "";
 }
 

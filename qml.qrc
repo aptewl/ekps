@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/google_icons/star.svg</file>
+        <file>icons/google_icons/menu.svg</file>
+        <file>icons/google_icons/magnify.svg</file>
+        <file>icons/google_icons/heart.svg</file>
+        <file>qmls/main.qml</file>
+        <file>qmls/EKPSTool.qml</file>
+        <file>qmls/EKPSSwitch.qml</file>
+        <file>qmls/EKPSSearch.qml</file>
+        <file>qmls/EKPSInfo.qml</file>
+        <file>qmls/EKPSDelegat.qml</file>
+        <file>qmls/EKPSButton.qml</file>
+        <file>database/ekps_db</file>
+    </qresource>
+</RCC>
