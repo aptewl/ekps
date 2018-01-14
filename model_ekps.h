@@ -1,21 +1,17 @@
 #ifndef MODEL_EKPS_H
 #define MODEL_EKPS_H
 
-//#include <QObject>
 #include <QAbstractTableModel>
 #include "db.h"
 
 class Model_EKPS : public QAbstractTableModel
 {
     Q_OBJECT
-    //Q_PROPERTY (int var_var READ getModel NOTIFY modelChanged)
 public:
     Model_EKPS(QObject *parent=0);
     Model_EKPS(Database *l_db, QObject *parent=0);
     Model_EKPS(QList< QPair<QString, int> > listofPairs, QObject *parent=0);
     Model_EKPS(QStringList list, QObject *parent=0);
-//    int getModel();
-    //Model_EKPS(Database m_db, QObject *parent=0);
     int rowCount(const QModelIndex &parent) const;
     int columnCount(const QModelIndex &parent) const;
     QVariant data(const QModelIndex &index, int role) const;
@@ -26,22 +22,16 @@ public:
     Q_INVOKABLE void showOnlyLiked();
     Q_INVOKABLE void showAll();
     Q_INVOKABLE void searchContext(QString search_str);
-//    Q_INVOKABLE QString getCurKlassName(QString text);
     Q_INVOKABLE QString getCurKlInclude(QString text);
     Q_INVOKABLE QString getCurKlAddInclude(QString text);
     Q_INVOKABLE QString getCurKlNotInclude(QString text);
     Q_INVOKABLE QString getCurKlReplaced(QString text);
     QList<QString> getWordsFromString(QString search_str);
     Q_INVOKABLE void liked_to_NO_liked(QString kl_name, bool is_liked);
-//signals:
-//    void modelChanged();
-
 private:
     QList< QPair<QString, int> > listOfPairs;
     QStringList list_of_classes;
     Database *v_db;
-//    int var_var;
-
 };
 
 #endif // MODEL_EKPS_H

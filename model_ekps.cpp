@@ -22,17 +22,6 @@ Model_EKPS::Model_EKPS(QStringList list, QObject *parent): QAbstractTableModel(p
     list_of_classes = list;
 }
 
-//int Model_EKPS::getModel()
-//{
-//    return var_var;
-//}
-
-//Model_EKPS::Model_EKPS(Database m_db, QObject *parent): QAbstractTableModel(parent)
-//{
-//    v_db = m_db;
-//    listOfPairs = v_db.GetAllDataPair();
-//}
-
 int Model_EKPS::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
@@ -69,7 +58,6 @@ QVariant Model_EKPS::data(const QModelIndex &index, int role) const
             return QVariant("#2196f3");
         }
     }
-
 
     //show data
     if (role == (Qt::UserRole + 1)) {
@@ -117,13 +105,6 @@ void Model_EKPS::searchContext(QString search_str)
     }
     emit endResetModel();
 }
-
-//QString Model_EKPS::getCurKlassName(QString text)
-//{
-//    return
-//}
-
-
 
 QString Model_EKPS::getCurKlInclude(QString text)
 {
@@ -218,24 +199,3 @@ void Model_EKPS::liked_to_NO_liked(QString kl_name, bool is_liked)
         v_db->Change_is_liked(kl_name.remove(5,kl_name.size()),is_liked);
     }
 }
-
-
-
-//bool Model_EKPS::is_liked()
-//{
-
-//}
-
-
-
-//QVariant Model_EKPS::headerData(int section, Qt::Orientation orientation, int role) const
-//{
-//    return QVariant();
-//}
-
-//Qt::ItemFlags Model_EKPS::flags(const QModelIndex &index) const
-//{
-
-//}
-
-

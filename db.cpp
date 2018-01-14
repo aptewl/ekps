@@ -14,7 +14,6 @@ Database::Database(QString path_db)
     if (!sdb.open()) {
         qDebug() << sdb.lastError().text()<<"**********************" ;
         qDebug() << "Can not open connection: " << sdb.lastError().driverText();
-        //exit(CONNECTION_FAILED);
     }
 }
 
@@ -217,8 +216,6 @@ QString Database::GetIncludeByKodKl(QString kod)
     query.bindValue(":kod", kod);
     query.exec();
     query.first();
-    //qDebug()<<"================"<<kod;
-    //qDebug()<<"================"<<query.value(0).toString();
     return query.value(0).toString();
 }
 
@@ -254,11 +251,8 @@ QString Database::GetReplacedByKodKl(QString kod)
 
 QString Database::pswd()
 {
-    //    QFile file("./pswd.txt");
-    //    if (!file.open(QIODevice::ReadOnly))
-    //        return "";
-    //    return QString(file.readAll());
-    return "34edT_45_yImmn_EKPS_ddD-0";
+    //to obtain a password, write to e-mail with your name and purpose
+    return "";
 }
 
 void Database::Change_is_liked(QString kod, bool is_liked)
@@ -281,7 +275,6 @@ void Database::UpperAllDB()
     QSqlQuery query,query2;
     query.prepare("select distinct KL.kl_kod ,KL.kl_name, KL.kl_prim, KL.kl_adding_includ, KL.kl_not from KL");
     query.exec();
-    //    int i = 0;
     while (query.next()) {
         query2.clear();
         query2.prepare("update KL set d_kl_name = :name, d_kl_prim = :prim, d_kl_adding_includ = :incl , d_kl_not = :notk where KL.kl_kod like :kod ");
@@ -291,8 +284,6 @@ void Database::UpperAllDB()
         query2.bindValue(":incl", query.value(3).toString().toUpper());
         query2.bindValue(":notk", query.value(4).toString().toUpper());
         query2.exec();
-        //        qDebug()<<"======" << i << "-----"<< query.value(1).toString().toUpper();
-        //        i++;
     }
 }
 

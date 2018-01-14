@@ -1,10 +1,8 @@
-import QtQuick 2.6
-import QtQuick.Controls 2.1
+import QtQuick 2.9
+import QtQuick.Controls 2.2
 
 SwitchDelegate {
     id: control
-    //text: qsTr("SwitchDelegate")
-    //checked: true
 
     contentItem: Text {
         rightPadding: control.indicator.width + control.spacing
@@ -39,7 +37,7 @@ SwitchDelegate {
     background: Rectangle {
         implicitWidth: 100
         implicitHeight: 40
-        visible: false//control.down || control.highlighted
+        visible: false
         color: control.down ? "#bdbebf" : "#eeeeee"
     }
 }

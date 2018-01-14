@@ -1,23 +1,14 @@
 import QtQuick 2.9
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.2
-//import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
-//Flickable{
-//    anchors.fill: parent
-//    contentHeight: rs.height
-
 Rectangle {
-
-
     id: rs
-    //z:500
     opacity: 0
     anchors.left: parent.left
     anchors.right: parent.right
     anchors.top: parent.top
-    //anchors.bottom: b.bottom
     height: mo.height+ lb.height+ swch.height+
             mo2.height+ lb2.height+ mo25.height+
             lb25.height+  mo3.height+ lb3.height+
@@ -27,13 +18,11 @@ Rectangle {
     anchors.rightMargin: 5 * parent.width / 100
     anchors.topMargin: 70
     anchors.bottomMargin: 70
-    //ScrollView: true
     color: "#e3f2fd"
     radius: 8
-    visible: opacity > 0 //изначально форма невидимая
+    visible: opacity > 0 //initially form invisible
     border.color: "grey"
     border.width: 2
-    //property alias gr_name: "Группа 10 Предметы гигиены "
     property alias is_liked: swch.checked
     property bool is_liked_conrol
     property alias kl_name: textEdit1.text
@@ -43,14 +32,11 @@ Rectangle {
     property alias replased: textEdit4.text
 
 
-
-
-
     PropertyAnimation {
         id: circleAnimation9
-        target: rs// The aim Asking circular background
-        properties: "opacity" // In animation, change the height, width and radius
-        from: 1 // Change the settings from 0 pixels ...
+        target: rs
+        properties: "opacity" // In animation, change the opacity
+        from: 1 // Change the settings from 1  ...
         to: 0
         duration: 600
     }
@@ -59,23 +45,12 @@ Rectangle {
         anchors.fill: parent
     }
 
-
-
-
     Column {
         id: grid
         anchors.fill: parent
         anchors.topMargin: 30
         spacing: 10
-        //clip: true
 
-        //        Switch {
-        //            id: switch1
-        //            text: qsTr(" в закладки")
-        //            anchors.left:  parent.left
-        //            anchors.leftMargin:  10
-
-        //        }
         EKPSSwitch {
             id: swch
             text: qsTr(" в закладки")
@@ -84,31 +59,16 @@ Rectangle {
             anchors.rightMargin:  10
         }
 
-        //        Switch {
-        //            id: switch1
-        //            //text: qsTr(" в закладки")
-        //            anchors.right:  parent.right
-        //            anchors.rightMargin:  10
-        //            Text {
-        //                id:svitch_text
-        //                text: qsTr(" в закладки")
-        //                anchors.right: switch1.left
-        //            }
-        //        }
-
-
         Label {
             id: lb
             clip: true
-            text: "Наименование"
+            text: qsTr("Наименование")
             color: "#616161"
             font.bold: true
             anchors.left: parent.left
             anchors.leftMargin: 10
-            // anchors.top: parent.top
-            // anchors.topMargin: 30
         }
-
+        //-----------1-------------
         Rectangle {
             id: mo
             width: 95 * parent.width/100
@@ -127,8 +87,6 @@ Rectangle {
                 wrapMode: TextEdit.Wrap
                 width: mo.width
                 height: mo.height
-                //font.pixelSize: 12
-                //focus: true
                 text: ""
                 horizontalAlignment: Text.AlignLeft
                 cursorVisible: true
@@ -136,17 +94,7 @@ Rectangle {
                 selectByMouse: true
             }
         }
-        //-----------5-------------
-//        Label {
-//            id: lb4
-//            clip: true
-//            text: "Перенесено в"
-//            anchors.left: parent.left
-//            anchors.leftMargin: 10
-//            color: "#ffcc33"
-//            font.bold: true
-//            visible: textEdit4.text != ""
-//        }
+        //-----------2-------------
         Rectangle {
             id: mo4
             width: 95 * parent.width/100
@@ -165,8 +113,6 @@ Rectangle {
                 anchors.fill: parent
                 wrapMode: TextEdit.Wrap
                 width: mo4.width
-                //height: mo4.height
-                //font.: 12
                 focus: true
                 text: ""
                 color: "#ff3300"
@@ -181,7 +127,7 @@ Rectangle {
             clip: true
             anchors.left: parent.left
             anchors.leftMargin: 10
-            text: "Включает"
+            text: qsTr("Включает")
             color: "#616161"
             font.bold: true
             visible: textEdit2.text != ""
@@ -204,8 +150,6 @@ Rectangle {
                 anchors.fill: parent
                 wrapMode: TextEdit.Wrap
                 width: mo2.width
-                //height: mo.height
-                //font.pixelSize: 12
                 focus: true
                 text: kl_name
                 horizontalAlignment: Text.AlignLeft
@@ -214,13 +158,13 @@ Rectangle {
                 //selectByMouse: true
             }
         }
-        //-----2.5-------------------
+        //-----4-------------------
         Label {
             id: lb25
             clip: true
             anchors.left: parent.left
             anchors.leftMargin: 10
-            text: "Также включает"
+            text: qsTr("Также включает")
             color: "#616161"
             font.bold: true
             visible: textEdit25.text != ""
@@ -243,8 +187,6 @@ Rectangle {
                 anchors.fill: parent
                 wrapMode: TextEdit.Wrap
                 width: mo25.width
-                //height: mo.height
-                //font.pixelSize: 12
                 focus: true
                 text: adding_includ
                 //cursorVisible: false
@@ -252,11 +194,11 @@ Rectangle {
                 //selectByMouse: true
             }
         }
-        //-------4-----------------
+        //-------5-----------------
         Label {
             id: lb3
             clip: true
-            text: "Не включает "
+            text: qsTr("Не включает ")
             anchors.left: parent.left
             anchors.leftMargin: 10
             color: "#616161"
@@ -281,35 +223,21 @@ Rectangle {
                 anchors.fill: parent
                 wrapMode: TextEdit.Wrap
                 width: mo3.width
-                //height: mo.height
-                //font.pixelSize: 12
                 focus: true
-                text: "adfsdfasgadhf"
                 //cursorVisible: false
                 readOnly: true
                 //selectByMouse: true
             }
         }
-
-
     }
 
     EKPSButton {
         id: b
-        text: 'ЗАКРЫТЬ'
+        text: qsTr('ЗАКРЫТЬ')
         type: 'CANCEL_INFO'
         button_color: "#616161"
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: 15
-        // ColorOverlay {
-        //     anchors.fill: b
-        //     source: b
-        //     color: "#1976d2"
-        // }
     }
-
-
 }
-
-//}

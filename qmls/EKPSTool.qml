@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.9
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Styles 1.4
@@ -14,12 +14,17 @@ Rectangle {
     EKPSButton {
         id: bt
         anchors.left: parent.left
-        anchors.leftMargin: 0
+        anchors.leftMargin: 16
+        anchors.top: parent.top
+        anchors.topMargin: 8
         type: 'MENU_WIEW'
         button_color: "#ffffff"
-        image_source: "qrc:menu.svg"
-        h_size: parent.height / 3
-        w_size: 1.2*h_size
+        image_source: "qrc:icons/google_icons/menu.svg"
+        h_size: 50//parent.height / 3  //min 40, max 56
+        w_size: 50//1.2*h_size         //min 40, max 56
+        // if it is necessary to take into account the sizes
+        // of the screens of different telephons and tablets,
+        // then to dissolve
     }
 
     Text {
@@ -27,36 +32,39 @@ Rectangle {
         color: "#ffffff"
         text: qsTr("ЕКПС")
         anchors.top: parent.top
-        anchors.topMargin: 7
+        anchors.topMargin: 8
         anchors.left: bt.right
         anchors.leftMargin: 0
         anchors.right: bt2.left
         anchors.rightMargin: 0
         horizontalAlignment: Text.AlignHCenter
-        //font.pixelSize: 12
     }
 
     EKPSButton {
         id: bt2
         anchors.right: bt3.left
-        anchors.rightMargin: 10
+        anchors.rightMargin: 8
+        anchors.top: parent.top
+        anchors.topMargin: 8
         type: 'FINDE_DIALOG_SHOW'
         button_color: "#ffffff"
-        image_source: "qrc:magnify.svg"
-        h_size: parent.height / 3
-        w_size: 1.2*h_size
+        image_source: "qrc:icons/google_icons/magnify.svg"
+        h_size: bt.h_size
+        w_size: bt.w_size
     }
 
     EKPSButton {
         id: bt3
         anchors.right: parent.right
-        anchors.rightMargin: 0
+        anchors.rightMargin: 16
+        anchors.top: parent.top
+        anchors.topMargin: 8
         type: 'LIKE'
         button_color: "#ffffff"
-        image_source: "qrc:heart.svg"
+        image_source: "qrc:icons/google_icons/heart.svg"
         //image_source: "qrc:star.svg"
-        h_size: parent.height / 3
-        w_size: 1.2*h_size
+        h_size:bt.h_size
+        w_size: bt.w_size
     }
 
     Text {
@@ -66,21 +74,18 @@ Rectangle {
         clip: true
         anchors.left: parent.left
         anchors.leftMargin: 5
-        //anchors.leftMargin: 22
-        //fontSizeMode: Text.HorizontalFit
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        anchors.top: text1.bottom
-        anchors.topMargin: 15
-        //font.pixelSize: 12
+        anchors.top: bt.bottom
+        anchors.topMargin: 8
     }
 
     PropertyAnimation {
         id: circleAnimation4
-        target: search // The aim Asking circular background
-        properties: "opacity" // In animation, change the height, width and radius
-        from: 0 // Change the settings from 0 pixels ...
+        target: search
+        properties: "opacity" // In animation, change the opacity
+        from: 0 // Change the settings from 0  ...
         to: 1
-        duration: 600 // within 300 milliseconds
+        duration: 600 // within 600 milliseconds
     }
 }

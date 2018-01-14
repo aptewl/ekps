@@ -13,12 +13,12 @@ int main(int argc, char *argv[])
     QFile dfile("./ekps_db");
     if (!dfile.exists())
     {
-        QFile::copy(":/ekps_db3", "./ekps_db");
+        QFile::copy(":database/ekps_db3", "./ekps_db");
         QFile::setPermissions("./ekps_db",QFile::WriteOwner | QFile::ReadOwner);
     }
     Database* db= new Database("./ekps_db");
 
-    //upper DB; tmp function
+    //upper DB, tmp function
     //db->UpperAllDB();
 
     // Model settings
@@ -27,9 +27,10 @@ int main(int argc, char *argv[])
     // QML  settings
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("classListmodel", model);
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qmls/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 
     // App start
-    return app.exec();}
+    return app.exec();
+}

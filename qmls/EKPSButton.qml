@@ -1,5 +1,5 @@
-import QtQuick 2.7
-import QtQuick 2.0
+import QtQuick 2.9/*
+//import QtQuick 2.0*/
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Styles 1.4
@@ -7,15 +7,11 @@ import QtQuick.Controls.Styles 1.4
 Button {
     id: bt2
     property string type
-    property alias button_color: co.color //= "#ffffff"
+    property alias button_color: co.color
     property alias image_source: image.source
     property alias h_size: rcbtn.implicitHeight
     property alias w_size: rcbtn.implicitWidth
     property alias btn_img_visible: co.visible
-
-
-
-
 
     contentItem: Text {
         text: bt2.text
@@ -40,7 +36,6 @@ Button {
         source: image_source
         sourceSize.width: parent.width
         sourceSize.height: parent.height
-
     }
     ColorOverlay {
         id: co
@@ -57,7 +52,6 @@ Button {
         width: 0
         radius: 180
         color: "#b6e1fc"
-        //opacity: 0.7
         transform: Translate {
             x: -colorRect.width / 2
             y: -colorRect.height / 2
@@ -85,7 +79,7 @@ Button {
             if (bt2.type == "CANCEL_INFO") {
                 circleAnimation9.start()
                 if(info.is_liked_conrol != info.is_liked){
-                    console.log("не равны")
+                    //console.log("LOG TEXT -------- no equivalent")
                     classListmodel.liked_to_NO_liked(info.kl_name, info.is_liked)
                 }
                 info.kl_name = ""
@@ -98,6 +92,7 @@ Button {
 
             if (bt2.type == "FINDE_DIALOG_SHOW") {
                 circleAnimation4.start()
+                search.visible_position = 12
             }
 
             if (bt2.type == "FINDE_TXT") {
@@ -106,6 +101,7 @@ Button {
                     //txt.editingFinished()
                     classListmodel.searchContext(txt.text)
                     txt.text = ""
+                    search.visible_position  = - 2000//hide artefacts. bug of Qt fo android 4.2
                 }
             }
 
@@ -115,7 +111,6 @@ Button {
                     classListmodel.showAll()
                 } else {
                     bt2.state = 'down'
-                    //classListmodel.data_change_only_liked()
                     classListmodel.showOnlyLiked()
                 }
             }
@@ -129,8 +124,8 @@ Button {
             }
 
             if (bt2.type == "CLEAR_SEARCH") {
-                txt.text="";
-                txt.focus = false;
+                txt.text = qsTr("")
+                txt.focus = false
             }
 
         }

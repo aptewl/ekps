@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.9
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Styles 1.4
@@ -25,16 +25,15 @@ Rectangle {
         id: mouse_primary
         anchors.fill: parent
         hoverEnabled: true
-        onClicked: {
 
-            //id.gr_name: "Группа 10 Предметы гигиены "
+        onClicked: {
             info.is_liked  = heart.visible
             info.is_liked_conrol  = heart.visible
-            info.kl_name = delegat_text.text
-            info.kl_include = classListmodel.getCurKlInclude(delegat_text.text)
-            info.adding_includ = classListmodel.getCurKlAddInclude(delegat_text.text)
-            info.kl_not = classListmodel.getCurKlNotInclude(delegat_text.text)
-            info.replased = classListmodel.getCurKlReplaced(delegat_text.text)
+            info.kl_name = qsTr(delegat_text.text)
+            info.kl_include = qsTr(classListmodel.getCurKlInclude(delegat_text.text))
+            info.adding_includ = qsTr(classListmodel.getCurKlAddInclude(delegat_text.text))
+            info.kl_not = qsTr(classListmodel.getCurKlNotInclude(delegat_text.text))
+            info.replased = qsTr(classListmodel.getCurKlReplaced(delegat_text.text))
             info.opacity = 1
             fl.visible = true
             fl.z = 800
@@ -49,8 +48,7 @@ Rectangle {
         onReleased: circleAnimation.stop()
         onPositionChanged: circleAnimation.stop()
 
-        Item {
-            //сердечко
+        Item {//show heart for delegats who select as "in bookmarks"
             id: heart
             property color overlayColor: "#000000"
             visible: model.Is_liked_Role == 1 ? true : false
@@ -60,7 +58,7 @@ Rectangle {
                 id: img
                 sourceSize.width: 0.25 * parent.height
                 sourceSize.height: 0.25 * parent.height
-                source: "qrc:heart.svg"
+                source: "qrc:icons/google_icons/heart.svg"
                 smooth: true
             }
             ColorOverlay {
@@ -86,10 +84,10 @@ Rectangle {
 
     PropertyAnimation {
         id: circleAnimation2
-        target: info // The aim Asking circular background
-        properties: "opacity" // In animation, change the height, width and radius
-        from: 0 // Change the settings from 0 pixels ...
+        target: info
+        properties: "opacity" // In animation, change the opacity
+        from: 0 // Change the settings from 0  ...
         to: 1
-        duration: 600 // within 300 milliseconds
+        duration: 600 // within 600 milliseconds
     }
 }
